@@ -2,74 +2,73 @@
 
 # $FreeBSD$
 #
-# PROVIDE: minetest
+# PROVIDE: luanti
 # REQUIRE: LOGIN
 # KEYWORD: shutdown
 #
-# Add the following line to /etc/rc.conf[.local] to enable minetest server
-#
-# minetest_enable (bool):  Set to "NO" by default
-#                          Set it to "YES" to enable minetest server
-# minetest_conffile (str): Path to config file (required).
-#                          (default: /usr/local/etc/minetest.conf)
-# minetest_rundir (str):   Path to directory holding a pidfile.
-#                          (default: /var/run/minetest)
-# minetest_user (str):     User to run as
-#                          (default: minetest)
-# minetest_group (str):    Group to run as
-#                          (default: minetest)
-# minetest_logdir (str):   Path to log directory
-#                          (default: /var/log/minetest)
-# minetest_dbdir (str):    Path to world database directory
-#                          (default: /var/db/minetest)
+# Add the following line to /etc/rc.conf[.local] to enable luanti server #
+# luanti_enable (bool):  Set to "NO" by default
+#                          Set it to "YES" to enable luanti server
+# luanti_conffile (str): Path to config file (required).
+#                          (default: /usr/local/etc/luanti.conf)
+# luanti_rundir (str):   Path to directory holding a pidfile.
+#                          (default: /var/run/luanti)
+# luanti_user (str):     User to run as
+#                          (default: luanti)
+# luanti_group (str):    Group to run as
+#                          (default: luanti)
+# luanti_logdir (str):   Path to log directory
+#                          (default: /var/log/luanti)
+# luanti_dbdir (str):    Path to world database directory
+#                          (default: /var/db/luanti)
 
 . /etc/rc.subr
 
-name=minetest-dev
-rcvar=minetest_enable
+name=luanti-dev
+rcvar=luanti_enable
 
 load_rc_config ${name}
 
-: ${minetest_enable="NO"}
-: ${minetest_config="/usr/local/etc/minetest.conf"}
-: ${minetest_rundir="/var/run/minetest"}
-: ${minetest_user="minetest"}
-: ${minetest_group="minetest"}
-: ${minetest_logdir="/var/log/minetest"}
-: ${minetest_dbdir="/var/db/minetest"}
-: ${minetest_args:="--logfile ${minetest_logdir}/debug.log --world ${minetest_dbdir}/world ${minetest_flags}"}
+: ${luanti_enable="NO"}
+: ${luanti_config="/usr/local/etc/luanti.conf"}
+: ${luanti_rundir="/var/run/luanti"}
+: ${luanti_user="minetest"}
+: ${luanti_group="minetest"}
+: ${luanti_logdir="/var/log/luanti"}
+: ${luanti_dbdir="/var/db/luanti"}
+: ${luanti_args:="--logfile ${luanti_logdir}/debug.log --world ${luanti_dbdir}/world ${luanti_flags}"}
 
 pidfile=
 
-case "${minetest_args}" in
+case "${luanti_args}" in
 *--config\ *)
-	echo "Warning \$minetest_args includes --config option." \
-	     "Please use \$minetest_conffile instead."
+	echo "Warning \$luanti_args includes --config option." \
+	     "Please use \$luanti_conffile instead."
 	;;
 *)
-	minetest_args="--config ${minetest_config} ${minetest_args}"
+	luanti_args="--config ${luanti_config} ${luanti_args}"
 	;;
 esac
 
 command=/usr/sbin/daemon
-procname=/usr/local/bin/minetestserver
-pidfile=${minetest_rundir}/minetest.pid
-command_args="-c -f -p ${pidfile} /usr/bin/env HOME='${minetest_dbdir}' ${procname} ${minetest_args}"
-required_files=${minetest_config}
-start_precmd=minetest_prestart
+procname=/usr/local/bin/luantiserver
+pidfile=${luanti_rundir}/luanti.pid
+command_args="-c -f -p ${pidfile} /usr/bin/env HOME='${luanti_dbdir}' ${procname} ${luanti_args}"
+required_files=${luanti_config}
+start_precmd=luanti_prestart
 
-minetest_prestart () {
-	if [ ! -d ${minetest_rundir} ]; then
-		mkdir -m 755 -p ${minetest_rundir}
-		chown -R ${minetest_user}:${minetest_group} ${minetest_rundir}
+luanti_prestart () {
+	if [ ! -d ${luanti_rundir} ]; then
+		mkdir -m 755 -p ${luanti_rundir}
+		chown -R ${luanti_user}:${luanti_group} ${luanti_rundir}
 	fi
-	if [ ! -d ${minetest_logdir} ]; then
-		mkdir -m 755 -p ${minetest_logdir}
-		chown -R ${minetest_user}:${minetest_group} ${minetest_logdir}
+	if [ ! -d ${luanti_logdir} ]; then
+		mkdir -m 755 -p ${luanti_logdir}
+		chown -R ${luanti_user}:${luanti_group} ${luanti_logdir}
 	fi
-	if [ ! -d ${minetest_dbdir} ]; then
-		mkdir -m 755 -p ${minetest_dbdir}/data
-		chown -R ${minetest_user}:${minetest_group} ${minetest_dbdir}
+	if [ ! -d ${luanti_dbdir} ]; then
+		mkdir -m 755 -p ${luanti_dbdir}/data
+		chown -R ${luanti_user}:${luanti_group} ${luanti_dbdir}
 	fi
 }
 

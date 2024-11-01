@@ -1,6 +1,6 @@
 # PORTNAMe block
 PORTNAME=		luanti
-DISTVERSION=	g20241028
+DISTVERSION=	g20241031
 CATEGORIES=		games
 MASTER_SITES=	GH
 PKGNAMESUFFIX=	-dev
@@ -21,13 +21,12 @@ LIB_DEPENDS=	libzstd.so:archivers/zstd \
 
 # uses block
 USES=			cmake iconv:wchar_t sqlite ninja:make pkgconfig:build
-#USES=			cmake iconv:wchar_t sqlite ninja:make llvm:min=16 pkgconfig:build
 USE_GITHUB=     nodefault
 GH_ACCOUNT=     minetest
 #GH_ACCOUNT=    luanti-org
 GH_PROJECT=     minetest
 #GH_PROJECT=   	luanti
-GH_TAGNAME=		c81cc4fa6054fddb92414e2dbfe25b2890a1b391
+GH_TAGNAME=		5c5538685e59012727758ebc8228979ef7706700
 
 # uses=cmake related variables
 CMAKE_ARGS=		-DCMAKE_BUILD_TYPE="MinSizeRel" \
@@ -175,40 +174,40 @@ LIB_DEPENDS+=	libogg.so:audio/libogg libvorbisfile.so:audio/libvorbis
 .endif
 
 .if ${PORT_OPTIONS:MSERVER}
-#USE_RC_SUBR=	${PORTNAME}
-#USERS=		${PORTNAME}
-#GROUPS=	${PORTNAME}
-#USE_RC_SUBR=	minetest/ERX
-USE_RC_SUBR=	minetest
+USE_RC_SUBR=	${PORTNAME}
+# When the official /usr/ports/GIDs file is changed, this may be luanti instead of minetest.
+# At that time the files/luanti.in will need to be modified for the user and group defined.
+#USERS=			${PORTNAME}
 USERS=			minetest
+#GROUPS=		${PORTNAME}
 GROUPS=			minetest
 .endif
 
 # Exactly why this must be done this way eludes me but this works and satisfies the install needs.
 .if ${PORT_OPTIONS:MSYSTEM_FONTS}
 pre-install:
-	${RM} ${LOCALBASE}/share/minetest/fonts/Arimo-Bold.ttf
-	${RM} ${LOCALBASE}/share/minetest/fonts/Arimo-BoldItalic.ttf
-	${RM} ${LOCALBASE}/share/minetest/fonts/Arimo-Italic.ttf
-	${RM} ${LOCALBASE}/share/minetest/fonts/Cousine-Bold.ttf
-	${RM} ${LOCALBASE}/share/minetest/fonts/Cousine-BoldItalic.ttf
-	${RM} ${LOCALBASE}/share/minetest/fonts/Cousine-Italic.ttf
-	${RM} ${LOCALBASE}/share/minetest/fonts/Cousine-Regular.ttf
-	${RM} ${LOCALBASE}/share/minetest/fonts/DroidSansFallbackFull.ttf
-	${MKDIR} ${LOCALBASE}/share/minetest/fonts
-	${LN} -s ${LOCALBASE}/share/fonts/ChromeOS/Arimo-Bold.ttf ${LOCALBASE}/share/minetest/fonts/Arimo-Bold.ttf
-	${LN} -s ${LOCALBASE}/share/fonts/ChromeOS/Arimo-BoldItalic.ttf ${LOCALBASE}/share/minetest/fonts/Arimo-BoldItalic.ttf
-	${LN} -s ${LOCALBASE}/share/fonts/ChromeOS/Arimo-Italic.ttf ${LOCALBASE}/share/minetest/fonts/Arimo-Italic.ttf
-	${LN} -s ${LOCALBASE}/share/fonts/ChromeOS/Cousine-Bold.ttf ${LOCALBASE}/share/minetest/fonts/Cousine-Bold.ttf
-	${LN} -s ${LOCALBASE}/share/fonts/ChromeOS/Cousine-BoldItalic.ttf ${LOCALBASE}/share/minetest/fonts/Cousine-BoldItalic.ttf
-	${LN} -s ${LOCALBASE}/share/fonts/ChromeOS/Cousine-Italic.ttf ${LOCALBASE}/share/minetest/fonts/Cousine-Italic.ttf
-	${LN} -s ${LOCALBASE}/share/fonts/ChromeOS/Cousine-Regular.ttf ${LOCALBASE}/share/minetest/fonts/Cousine-Regular.ttf
-	${LN} -s ${LOCALBASE}/share/fonts/Droid/DroidSansFallbackFull.ttf ${LOCALBASE}/share/minetest/fonts/DroidSansFallbackFull.ttf
+	${RM} ${LOCALBASE}/share/luanti/fonts/Arimo-Bold.ttf
+	${RM} ${LOCALBASE}/share/luanti/fonts/Arimo-BoldItalic.ttf
+	${RM} ${LOCALBASE}/share/luanti/fonts/Arimo-Italic.ttf
+	${RM} ${LOCALBASE}/share/luanti/fonts/Cousine-Bold.ttf
+	${RM} ${LOCALBASE}/share/luanti/fonts/Cousine-BoldItalic.ttf
+	${RM} ${LOCALBASE}/share/luanti/fonts/Cousine-Italic.ttf
+	${RM} ${LOCALBASE}/share/luanti/fonts/Cousine-Regular.ttf
+	${RM} ${LOCALBASE}/share/luanti/fonts/DroidSansFallbackFull.ttf
+	${MKDIR} ${LOCALBASE}/share/luanti/fonts
+	${LN} -s ${LOCALBASE}/share/fonts/ChromeOS/Arimo-Bold.ttf ${LOCALBASE}/share/luanti/fonts/Arimo-Bold.ttf
+	${LN} -s ${LOCALBASE}/share/fonts/ChromeOS/Arimo-BoldItalic.ttf ${LOCALBASE}/share/luanti/fonts/Arimo-BoldItalic.ttf
+	${LN} -s ${LOCALBASE}/share/fonts/ChromeOS/Arimo-Italic.ttf ${LOCALBASE}/share/luanti/fonts/Arimo-Italic.ttf
+	${LN} -s ${LOCALBASE}/share/fonts/ChromeOS/Cousine-Bold.ttf ${LOCALBASE}/share/luanti/fonts/Cousine-Bold.ttf
+	${LN} -s ${LOCALBASE}/share/fonts/ChromeOS/Cousine-BoldItalic.ttf ${LOCALBASE}/share/luanti/fonts/Cousine-BoldItalic.ttf
+	${LN} -s ${LOCALBASE}/share/fonts/ChromeOS/Cousine-Italic.ttf ${LOCALBASE}/share/luanti/fonts/Cousine-Italic.ttf
+	${LN} -s ${LOCALBASE}/share/fonts/ChromeOS/Cousine-Regular.ttf ${LOCALBASE}/share/luanti/fonts/Cousine-Regular.ttf
+	${LN} -s ${LOCALBASE}/share/fonts/Droid/DroidSansFallbackFull.ttf ${LOCALBASE}/share/luanti/fonts/DroidSansFallbackFull.ttf
 .endif
 
-pre-install:
-	${RM} ${WRKSRC}/bin/minetest
-	${RM} ${WRKSRC}/bin/minetestserver
+post-stage:
+	${RM} ${STAGEDIR}${LOCALBASE}/bin/minetest
+	${RM} ${STAGEDIR}${LOCALBASE}/bin/minetestserver
 
 
 post-install:

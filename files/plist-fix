@@ -13,13 +13,15 @@ sed \
 -e 's#^\%\%PORT#\%\%#g' \
 -e 's#^bin/luantiserver#\%\%SERVER\%\%bin/luantiserver#1' \
 -e 's#^bin/luanti#\%\%CLIENT\%\%bin/luanti#1' \
+-e 's#^\%\%ETCDIR\%\%.conf.example#@sample\ etc/minetest.conf.example\ etc/minetest.conf#' \
+-e 's#^\%\%ETCDIR\%\%.conf.example#@sample\ etc/luanti.conf.example\ etc/luanti.conf#' \
+-e 's#^etc/rc.d/minetest#\%\%SERVER\%\%etc/rc.d/minetest#1' \
+-e 's#^etc/rc.d/luanti#\%\%SERVER\%\%etc/rc.d/luanti#1' \
+-e 's#^share/man/man6/luanti.6.gz#\%\%CLIENT\%\%share/man/man6/luanti.6.gz#1' \
+-e 's#^share/man/man6/luantiserver.6.gz#\%\%SERVER\%\%share/man/man6/luantiserver.6.gz#1' \
+-e 's#^\%\%DATADIR\%\%/client#\%\%CLIENT\%\%\%\%DATADIR\%\%/client#g' \
+-e 's#^\%\%DATADIR\%\%/fonts#\%\%CLIENT\%\%\%\%DATADIR\%\%/fonts#g' \
+-e 's#^\%\%DATADIR\%\%/textures#\%\%CLIENT\%\%\%\%DATADIR\%\%/textures#g' \
+-e 's#^\%\%DATADIR\%\%/games/devtest#\%\%DEVTEST\%\%\%\%DATADIR\%\%/games/devtest#g' \
 > /var/tmp/minetest-dev_pkg-plist-fixed
 cp /var/tmp/minetest-dev_pkg-plist-fixed ../pkg-plist
-#-e 's#^\%\%ETCDIR\%\%.conf.example#@sample\ etc/minetest.conf.example\ etc/minetest.conf#' \
-#-e 's#^etc/rc.d/luanti#\%\%SERVER\%\%etc/rc.d/luanti#1' \
-#-e 's#^share/man/man6/luanti.6.gz#\%\%CLIENT\%\%share/man/man6/luanti.6.gz#1' \
-#-e 's#^share/man/man6/luantiserver.6.gz#\%\%SERVER\%\%share/man/man6/luantiserver.6.gz#1' \
-#-e 's#^\%\%DATADIR\%\%/client#\%\%CLIENT\%\%\%\%DATADIR\%\%/client#g' \
-#-e 's#^\%\%DATADIR\%\%/fonts#\%\%CLIENT\%\%\%\%DATADIR\%\%/fonts#g' \
-#-e 's#^\%\%DATADIR\%\%/textures#\%\%CLIENT\%\%\%\%DATADIR\%\%/textures#g' \
-#-e 's#^\%\%DATADIR\%\%/games/devtest#\%\%DEVTEST\%\%\%\%DATADIR\%\%/games/devtest#g' \
