@@ -1,4 +1,4 @@
-# PORTNAMe block
+# PORTNAME block
 PORTNAME=		luanti
 DISTVERSION=	g20241102
 CATEGORIES=		games
@@ -21,11 +21,9 @@ LIB_DEPENDS=	libzstd.so:archivers/zstd \
 
 # uses block
 USES=			cmake iconv:wchar_t sqlite ninja:make pkgconfig:build
-USE_GITHUB=     nodefault
-GH_ACCOUNT=     minetest
-#GH_ACCOUNT=    luanti-org
-GH_PROJECT=     minetest
-#GH_PROJECT=   	luanti
+USE_GITHUB=		nodefault
+GH_ACCOUNT=		minetest #GH_ACCOUNT=		luanti-org
+GH_PROJECT=		minetest #GH_PROJECT=		luanti
 GH_TAGNAME=		e952a0807b85e089eaa320cfeb09e33816d141ed
 
 # uses=cmake related variables
@@ -35,11 +33,10 @@ CMAKE_ARGS=		-DCMAKE_BUILD_TYPE="MinSizeRel" \
 #				-DCMAKE_FETCHCONTENT_FULLY_DISCONNECTED="FALSE"
 
 # conflicts
-CONFLICTS=		minetest irrlichtMt irrlicht-minetest
+CONFLICTS=		minetest irrlichtMt minetest-dev irrlicht-minetest
 
 # wrksrc block
-#WRKSRC=			${WRKDIR}/${PORTNAME}-${GH_TAGNAME}
-WRKSRC=			${WRKDIR}/minetest-${GH_TAGNAME}
+WRKSRC=			${WRKDIR}/minetest-${GH_TAGNAME} #WRKSRC=			${WRKDIR}/${PORTNAME}-${GH_TAGNAME}
 
 # packaging list block
 #DOCS=		*
@@ -177,10 +174,8 @@ LIB_DEPENDS+=	libogg.so:audio/libogg libvorbisfile.so:audio/libvorbis
 USE_RC_SUBR=	${PORTNAME}
 # When the official /usr/ports/GIDs file is changed, this may be luanti instead of minetest.
 # At that time the files/luanti.in will need to be modified for the user and group defined.
-#USERS=			${PORTNAME}
-USERS=			minetest
-#GROUPS=		${PORTNAME}
-GROUPS=			minetest
+USERS=			minetest #USERS=			${PORTNAME}
+GROUPS=			minetest #GROUPS=		${PORTNAME}
 .endif
 
 # Exactly why this must be done this way eludes me but this works and satisfies the install needs.
@@ -205,6 +200,7 @@ pre-install:
 	${LN} -s ${LOCALBASE}/share/fonts/Droid/DroidSansFallbackFull.ttf ${LOCALBASE}/share/luanti/fonts/DroidSansFallbackFull.ttf
 .endif
 
+# These are temporary links which might only be useful for transition and a blind update, when used they indicate a deprecated solution.
 post-stage:
 	${RM} ${STAGEDIR}${LOCALBASE}/bin/minetest
 	${RM} ${STAGEDIR}${LOCALBASE}/bin/minetestserver
