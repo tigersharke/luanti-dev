@@ -170,6 +170,9 @@ USES+=			openal
 LIB_DEPENDS+=	libogg.so:audio/libogg libvorbisfile.so:audio/libvorbis
 .endif
 
+# In addition to below, `make check-plist` wants the %%SERVER%% omitted from the etc/rc.d/luanti line 
+# but if I do not et the config to build the server then it fails to find etc/rc.d/luanti to install,
+# so it is best to include the %%SERVER%% and ignore what check-plist wants.
 .if ${PORT_OPTIONS:MSERVER}
 USE_RC_SUBR=	${PORTNAME}
 # When the official /usr/ports/GIDs file is changed, this may be luanti instead of minetest.
