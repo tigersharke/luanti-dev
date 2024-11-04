@@ -22,6 +22,6 @@ sed \
 -e 's#^\%\%DATADIR\%\%/fonts#\%\%CLIENT\%\%\%\%DATADIR\%\%/fonts#g' \
 -e 's#^\%\%DATADIR\%\%/textures#\%\%CLIENT\%\%\%\%DATADIR\%\%/textures#g' \
 -e 's#^\%\%DATADIR\%\%/games/devtest#\%\%DEVTEST\%\%\%\%DATADIR\%\%/games/devtest#g' \
+-e 's#^etc/rc.d/luanti#\%\%SERVER\%\%etc/rc.d/luanti#1' \
 > /var/tmp/minetest-dev_pkg-plist-fixed
 cp /var/tmp/minetest-dev_pkg-plist-fixed ../pkg-plist
-#-e 's#^etc/rc.d/luanti#\%\%SERVER\%\%etc/rc.d/luanti#1' \
