@@ -211,7 +211,6 @@ share/icons/hicolor/scalable/apps/luanti.svg
 %%DATADIR%%/builtin/mainmenu/settings/generate_from_settingtypes.lua
 %%DATADIR%%/builtin/mainmenu/settings/init.lua
 %%DATADIR%%/builtin/mainmenu/settings/settingtypes.lua
-%%DATADIR%%/builtin/mainmenu/settings/shader_warning_component.lua
 %%DATADIR%%/builtin/mainmenu/settings/shadows_component.lua
 %%DATADIR%%/builtin/mainmenu/tab_about.lua
 %%DATADIR%%/builtin/mainmenu/tab_content.lua
