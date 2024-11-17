@@ -1,6 +1,6 @@
 # PORTNAME block
 PORTNAME=		luanti
-DISTVERSION=	g20241113
+DISTVERSION=	g20241115
 CATEGORIES=		games
 MASTER_SITES=	GH
 PKGNAMESUFFIX=	-dev
@@ -14,6 +14,7 @@ WWW=			https://www.minetest.net/
 
 # License block
 LICENSE=		LGPL21+
+LICENSE_FILE=	${WRKSRC}/doc/lgpl-2.1.txt
 
 # dependencies
 LIB_DEPENDS=	libzstd.so:archivers/zstd \
@@ -24,7 +25,7 @@ USES=			cmake iconv:wchar_t sqlite ninja:make pkgconfig:build
 USE_GITHUB=		nodefault
 GH_ACCOUNT=		minetest #GH_ACCOUNT=		luanti-org
 GH_PROJECT=		minetest #GH_PROJECT=		luanti
-GH_TAGNAME=		0c3117f9b32624955846314ebf87f757d124184f
+GH_TAGNAME=		11837d4623bf0eab0b706ed2cc81bf0bcfb79da8
 
 # uses=cmake related variables
 CMAKE_ARGS=		-DCMAKE_BUILD_TYPE="MinSizeRel" \
