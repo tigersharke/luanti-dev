@@ -814,6 +814,7 @@ share/icons/hicolor/scalable/apps/luanti.svg
 %%DEVTEST%%%%DATADIR%%/games/devtest/mods/testtools/textures/testtools_object_editor.png
 %%DEVTEST%%%%DATADIR%%/games/devtest/mods/testtools/textures/testtools_object_mover.png
 %%DEVTEST%%%%DATADIR%%/games/devtest/mods/testtools/textures/testtools_param2tool.png
+%%DEVTEST%%%%DATADIR%%/games/devtest/mods/testtools/textures/testtools_particle_clip.png
 %%DEVTEST%%%%DATADIR%%/games/devtest/mods/testtools/textures/testtools_particle_sheet.png
 %%DEVTEST%%%%DATADIR%%/games/devtest/mods/testtools/textures/testtools_particle_spawner.png
 %%DEVTEST%%%%DATADIR%%/games/devtest/mods/testtools/textures/testtools_particle_vertical.png
