@@ -545,6 +545,8 @@ share/icons/hicolor/scalable/apps/luanti.svg
 %%DEVTEST%%%%DATADIR%%/games/devtest/mods/testitems/textures/testitems_overlay_overlay.png
 %%DEVTEST%%%%DATADIR%%/games/devtest/mods/testitems/textures/testitems_overridden.png
 %%DEVTEST%%%%DATADIR%%/games/devtest/mods/testitems/textures/testitems_telescope_stick.png
+%%DEVTEST%%%%DATADIR%%/games/devtest/mods/testitems/textures/testitems_tree_spawner.png
+%%DEVTEST%%%%DATADIR%%/games/devtest/mods/testitems/textures/testitems_tree_spawner_vmanip.png
 %%DEVTEST%%%%DATADIR%%/games/devtest/mods/testnodes/README.md
 %%DEVTEST%%%%DATADIR%%/games/devtest/mods/testnodes/commands.lua
 %%DEVTEST%%%%DATADIR%%/games/devtest/mods/testnodes/drawtypes.lua
