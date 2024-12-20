@@ -481,6 +481,8 @@ share/icons/hicolor/scalable/apps/luanti.svg
 %%DEVTEST%%%%DATADIR%%/games/devtest/mods/testentities/init.lua
 %%DEVTEST%%%%DATADIR%%/games/devtest/mods/testentities/mod.conf
 %%DEVTEST%%%%DATADIR%%/games/devtest/mods/testentities/models/LICENSE.txt
+%%DEVTEST%%%%DATADIR%%/games/devtest/mods/testentities/models/testentities_lava_flan.png
+%%DEVTEST%%%%DATADIR%%/games/devtest/mods/testentities/models/testentities_lava_flan.x
 %%DEVTEST%%%%DATADIR%%/games/devtest/mods/testentities/models/testentities_sam.b3d
 %%DEVTEST%%%%DATADIR%%/games/devtest/mods/testentities/models/testentities_sam.png
 %%DEVTEST%%%%DATADIR%%/games/devtest/mods/testentities/observers.lua
