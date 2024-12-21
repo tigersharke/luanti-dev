@@ -245,8 +245,6 @@ share/icons/hicolor/scalable/apps/luanti.svg
 %%CLIENT%%%%DATADIR%%/client/shaders/blur_v/opengl_vertex.glsl
 %%CLIENT%%%%DATADIR%%/client/shaders/cloud_shader/opengl_fragment.glsl
 %%CLIENT%%%%DATADIR%%/client/shaders/cloud_shader/opengl_vertex.glsl
-%%CLIENT%%%%DATADIR%%/client/shaders/default_shader/opengl_fragment.glsl
-%%CLIENT%%%%DATADIR%%/client/shaders/default_shader/opengl_vertex.glsl
 %%CLIENT%%%%DATADIR%%/client/shaders/extract_bloom/opengl_fragment.glsl
 %%CLIENT%%%%DATADIR%%/client/shaders/extract_bloom/opengl_vertex.glsl
 %%CLIENT%%%%DATADIR%%/client/shaders/fxaa/opengl_fragment.glsl
@@ -954,6 +952,7 @@ share/icons/hicolor/scalable/apps/luanti.svg
 %%CLIENT%%%%DATADIR%%/textures/base/pack/server_ping_3.png
 %%CLIENT%%%%DATADIR%%/textures/base/pack/server_ping_4.png
 %%CLIENT%%%%DATADIR%%/textures/base/pack/server_public.png
+%%CLIENT%%%%DATADIR%%/textures/base/pack/server_url.png
 %%CLIENT%%%%DATADIR%%/textures/base/pack/server_view_clients.png
 %%CLIENT%%%%DATADIR%%/textures/base/pack/settings_btn.png
 %%CLIENT%%%%DATADIR%%/textures/base/pack/settings_info.png
