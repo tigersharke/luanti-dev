@@ -202,6 +202,7 @@ share/icons/hicolor/scalable/apps/luanti.svg
 %%DATADIR%%/builtin/mainmenu/dlg_register.lua
 %%DATADIR%%/builtin/mainmenu/dlg_reinstall_mtg.lua
 %%DATADIR%%/builtin/mainmenu/dlg_rename_modpack.lua
+%%DATADIR%%/builtin/mainmenu/dlg_server_list_mods.lua
 %%DATADIR%%/builtin/mainmenu/dlg_version_info.lua
 %%DATADIR%%/builtin/mainmenu/game_theme.lua
 %%DATADIR%%/builtin/mainmenu/init.lua
@@ -954,7 +955,11 @@ share/icons/hicolor/scalable/apps/luanti.svg
 %%CLIENT%%%%DATADIR%%/textures/base/pack/server_ping_4.png
 %%CLIENT%%%%DATADIR%%/textures/base/pack/server_public.png
 %%CLIENT%%%%DATADIR%%/textures/base/pack/server_url.png
+%%CLIENT%%%%DATADIR%%/textures/base/pack/server_url_unavailable.png
 %%CLIENT%%%%DATADIR%%/textures/base/pack/server_view_clients.png
+%%CLIENT%%%%DATADIR%%/textures/base/pack/server_view_clients_unavailable.png
+%%CLIENT%%%%DATADIR%%/textures/base/pack/server_view_mods.png
+%%CLIENT%%%%DATADIR%%/textures/base/pack/server_view_mods_unavailable.png
 %%CLIENT%%%%DATADIR%%/textures/base/pack/settings_btn.png
 %%CLIENT%%%%DATADIR%%/textures/base/pack/settings_info.png
 %%CLIENT%%%%DATADIR%%/textures/base/pack/settings_reset.png
