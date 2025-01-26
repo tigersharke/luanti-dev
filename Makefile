@@ -1,6 +1,6 @@
 # PORTNAME block
 PORTNAME=		luanti
-DISTVERSION=	g20250119
+DISTVERSION=	g20250123
 CATEGORIES=		games
 MASTER_SITES=	GH
 PKGNAMESUFFIX=	-dev
@@ -23,9 +23,9 @@ LIB_DEPENDS=	libzstd.so:archivers/zstd \
 # uses block
 USES=			cmake iconv:wchar_t sqlite ninja:make pkgconfig:build
 USE_GITHUB=		nodefault
-GH_ACCOUNT=		minetest #GH_ACCOUNT=		luanti-org
-GH_PROJECT=		minetest #GH_PROJECT=		luanti
-GH_TAGNAME=		547e1476bbfab8b986c799bf2686ad184ef03bb1
+GH_ACCOUNT=		luanti-org
+GH_PROJECT=		luanti
+GH_TAGNAME=		f592b57dc69728a45f38d7a9d78ee6d671bc46a9
 
 # uses=cmake related variables
 CMAKE_ARGS=		-DCMAKE_BUILD_TYPE="MinSizeRel" \
@@ -37,7 +37,7 @@ CMAKE_ARGS=		-DCMAKE_BUILD_TYPE="MinSizeRel" \
 CONFLICTS=		luanti minetest irrlichtMt minetest-dev irrlicht-minetest
 
 # wrksrc block
-WRKSRC=			${WRKDIR}/minetest-${GH_TAGNAME} #WRKSRC=			${WRKDIR}/${PORTNAME}-${GH_TAGNAME}
+WRKSRC=			${WRKDIR}/${PORTNAME}-${GH_TAGNAME}
 
 # packaging list block
 #DOCS=		*
