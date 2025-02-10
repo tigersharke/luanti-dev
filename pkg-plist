@@ -64,6 +64,7 @@ share/icons/hicolor/scalable/apps/luanti.svg
 %%CLIENT%%%%NLS%%share/locale/sr_Latn/LC_MESSAGES/luanti.mo
 %%CLIENT%%%%NLS%%share/locale/sv/LC_MESSAGES/luanti.mo
 %%CLIENT%%%%NLS%%share/locale/sw/LC_MESSAGES/luanti.mo
+%%CLIENT%%%%NLS%%share/locale/ta/LC_MESSAGES/luanti.mo
 %%CLIENT%%%%NLS%%share/locale/tok/LC_MESSAGES/luanti.mo
 %%CLIENT%%%%NLS%%share/locale/tr/LC_MESSAGES/luanti.mo
 %%CLIENT%%%%NLS%%share/locale/tt/LC_MESSAGES/luanti.mo
@@ -852,7 +853,6 @@ share/icons/hicolor/scalable/apps/luanti.svg
 %%DEVTEST%%%%DATADIR%%/games/devtest/mods/unittests/crafting.lua
 %%DEVTEST%%%%DATADIR%%/games/devtest/mods/unittests/crafting_prepare.lua
 %%DEVTEST%%%%DATADIR%%/games/devtest/mods/unittests/entity.lua
-%%DEVTEST%%%%DATADIR%%/games/devtest/mods/unittests/get_version.lua
 %%DEVTEST%%%%DATADIR%%/games/devtest/mods/unittests/init.lua
 %%DEVTEST%%%%DATADIR%%/games/devtest/mods/unittests/inside_async_env.lua
 %%DEVTEST%%%%DATADIR%%/games/devtest/mods/unittests/inside_mapgen_env.lua
@@ -876,6 +876,7 @@ share/icons/hicolor/scalable/apps/luanti.svg
 %%DEVTEST%%%%DATADIR%%/games/devtest/mods/unittests/textures/unittests_stick.png
 %%DEVTEST%%%%DATADIR%%/games/devtest/mods/unittests/textures/unittests_torch.png
 %%DEVTEST%%%%DATADIR%%/games/devtest/mods/unittests/textures/unittests_unrepairable_tool.png
+%%DEVTEST%%%%DATADIR%%/games/devtest/mods/unittests/version.lua
 %%DEVTEST%%%%DATADIR%%/games/devtest/mods/util_commands/init.lua
 %%DEVTEST%%%%DATADIR%%/games/devtest/mods/util_commands/mod.conf
 %%DEVTEST%%%%DATADIR%%/games/devtest/screenshot.png
