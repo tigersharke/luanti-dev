@@ -1,6 +1,6 @@
 # PORTNAME block
 PORTNAME=		luanti
-DISTVERSION=	g20250215
+DISTVERSION=	g20250218
 CATEGORIES=		games
 MASTER_SITES=	GH
 PKGNAMESUFFIX=	-dev
@@ -10,7 +10,7 @@ DIST_SUBDIR=	${PORTNAME}${PKGNAMESUFFIX}
 # Maintainer block
 MAINTAINER=		nope@nothere
 COMMENT=		Near-infinite-world block sandbox game
-WWW=			https://www.minetest.net/
+WWW=			https://www.luanti.org/
 
 # License block
 LICENSE=		LGPL21+
@@ -25,7 +25,7 @@ USES=			cmake iconv:wchar_t sqlite ninja:make pkgconfig:build
 USE_GITHUB=		nodefault
 GH_ACCOUNT=		luanti-org
 GH_PROJECT=		luanti
-GH_TAGNAME=		166e02955e719580772ebaabaf70d30300e18fec
+GH_TAGNAME=		ef0219c2ede88750db4ab562794dd4773a77bfa3
 
 # uses=cmake related variables
 CMAKE_ARGS=		-DCMAKE_BUILD_TYPE="MinSizeRel" \
@@ -54,7 +54,7 @@ OPTIONS_GROUP_SYSTEM=		SYSTEM_FONTS SYSTEM_GMP SYSTEM_JSONCPP SYSTEM_LUAJIT
 OPTIONS_MULTI=				SOFTWARE
 OPTIONS_MULTI_SOFTWARE=		CLIENT SERVER
 OPTIONS_SINGLE=				GRAPHICS
-OPTIONS_SINGLE_GRAPHICS=	GLES1 GLES2 OPENGL OPENGL3
+OPTIONS_SINGLE_GRAPHICS=	GLES2 OPENGL OPENGL3
 OPTIONS_SUB=				yes
 
 # options descriptions
@@ -66,7 +66,6 @@ DATABASE_DESC=				Database support
 DEVTEST_DESC=				Install Development Test game also (INSTALL_DEVTEST)
 DOCS_DESC=					Build and install documentation (via doxygen)
 #GITTRACY_DESC=				Fetch Tracy git tag --build fails-- --purpose uncertain--
-GLES1_DESC=					Enable OpenGL ES driver, legacy
 GLES2_DESC=					Enable OpenGL ES 2+ driver
 GRAPHICS_DESC=				Graphics support
 LEVELDB_DESC=				Enable LevelDB backend --broken - build fails--
@@ -111,8 +110,6 @@ CURL_LIB_DEPENDS=			libcurl.so:ftp/curl
 CURL_CMAKE_BOOL=			ENABLE_CURL
 DEVTEST_CMAKE_BOOL=			INSTALL_DEVTEST
 DOCS_CMAKE_BOOL=			BUILD_DOCUMENTATION
-GLES1_USE=					GL+=glesv1
-GLES1_CMAKE_BOOL=			ENABLE_GLES1
 GLES2_USE=					GL+=glesv2
 GLES2_CMAKE_BOOL=			ENABLE_GLES2
 LEVELDB_LIB_DEPENDS=		libleveldb.so:databases/leveldb
