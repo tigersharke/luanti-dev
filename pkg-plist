@@ -900,6 +900,7 @@ share/icons/hicolor/scalable/apps/luanti.svg
 %%CLIENT%%%%DATADIR%%/textures/base/pack/clear.png
 %%CLIENT%%%%DATADIR%%/textures/base/pack/crack_anylength.png
 %%CLIENT%%%%DATADIR%%/textures/base/pack/debug_btn.png
+%%CLIENT%%%%DATADIR%%/textures/base/pack/dig_btn.png
 %%CLIENT%%%%DATADIR%%/textures/base/pack/down.png
 %%CLIENT%%%%DATADIR%%/textures/base/pack/drop_btn.png
 %%CLIENT%%%%DATADIR%%/textures/base/pack/end_icon.png
@@ -934,6 +935,7 @@ share/icons/hicolor/scalable/apps/luanti.svg
 %%CLIENT%%%%DATADIR%%/textures/base/pack/noclip_btn.png
 %%CLIENT%%%%DATADIR%%/textures/base/pack/object_marker_red.png
 %%CLIENT%%%%DATADIR%%/textures/base/pack/overflow_btn.png
+%%CLIENT%%%%DATADIR%%/textures/base/pack/place_btn.png
 %%CLIENT%%%%DATADIR%%/textures/base/pack/player.png
 %%CLIENT%%%%DATADIR%%/textures/base/pack/player_back.png
 %%CLIENT%%%%DATADIR%%/textures/base/pack/player_marker.png

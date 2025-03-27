@@ -1,6 +1,6 @@
 # PORTNAME block
 PORTNAME=		luanti
-DISTVERSION=	g20250321
+DISTVERSION=	g20250324
 
 CATEGORIES=		games
 MASTER_SITES=	GH
@@ -26,9 +26,7 @@ USES=			cmake iconv:wchar_t sqlite ninja:make pkgconfig:build
 USE_GITHUB=		nodefault
 GH_ACCOUNT=		luanti-org
 GH_PROJECT=		luanti
-#GH_TAGNAME=		d085f0fb52206771b4d929f1fccc9c66139fbf35 #works
-GH_TAGNAME=		e0378737b7806cdfa227b8c6614f1fbfc71764ff #broken
-#GH_TAGNAME=		4ba438a7ec10b2c9fc1ab4a7df35573a71ea2ecf #broken
+GH_TAGNAME=		b1363fce8e60ba49fa104f1776b63c352ae7ce68
 
 # uses=cmake related variables
 CMAKE_ARGS=		-DCMAKE_BUILD_TYPE="MinSizeRel" \
