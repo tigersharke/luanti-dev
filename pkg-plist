@@ -898,6 +898,9 @@ share/icons/hicolor/scalable/apps/luanti.svg
 %%CLIENT%%%%DATADIR%%/textures/base/pack/checkbox_32.png
 %%CLIENT%%%%DATADIR%%/textures/base/pack/checkbox_64.png
 %%CLIENT%%%%DATADIR%%/textures/base/pack/clear.png
+%%CLIENT%%%%DATADIR%%/textures/base/pack/contentdb_neutral.png
+%%CLIENT%%%%DATADIR%%/textures/base/pack/contentdb_thumb_down.png
+%%CLIENT%%%%DATADIR%%/textures/base/pack/contentdb_thumb_up.png
 %%CLIENT%%%%DATADIR%%/textures/base/pack/crack_anylength.png
 %%CLIENT%%%%DATADIR%%/textures/base/pack/debug_btn.png
 %%CLIENT%%%%DATADIR%%/textures/base/pack/dig_btn.png
