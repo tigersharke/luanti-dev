@@ -83,6 +83,7 @@ share/icons/hicolor/scalable/apps/luanti.svg
 %%DATADIR%%/builtin/common/information_formspecs.lua
 %%DATADIR%%/builtin/common/item_s.lua
 %%DATADIR%%/builtin/common/math.lua
+%%DATADIR%%/builtin/common/menu.lua
 %%DATADIR%%/builtin/common/metatable.lua
 %%DATADIR%%/builtin/common/misc_helpers.lua
 %%DATADIR%%/builtin/common/mod_storage.lua
