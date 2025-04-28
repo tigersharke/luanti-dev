@@ -13,6 +13,7 @@ share/icons/hicolor/128x128/apps/luanti.png
 share/icons/hicolor/scalable/apps/luanti.svg
 %%CLIENT%%%%NLS%%share/locale/be/LC_MESSAGES/luanti.mo
 %%CLIENT%%%%NLS%%share/locale/bg/LC_MESSAGES/luanti.mo
+%%CLIENT%%%%NLS%%share/locale/br/LC_MESSAGES/luanti.mo
 %%CLIENT%%%%NLS%%share/locale/ca/LC_MESSAGES/luanti.mo
 %%CLIENT%%%%NLS%%share/locale/cs/LC_MESSAGES/luanti.mo
 %%CLIENT%%%%NLS%%share/locale/cy/LC_MESSAGES/luanti.mo
@@ -479,6 +480,8 @@ share/icons/hicolor/scalable/apps/luanti.svg
 %%DEVTEST%%%%DATADIR%%/games/devtest/mods/testabms/neighbors.lua
 %%DEVTEST%%%%DATADIR%%/games/devtest/mods/testabms/textures/testabms_after_node.png
 %%DEVTEST%%%%DATADIR%%/games/devtest/mods/testabms/textures/testabms_wait_node.png
+%%DEVTEST%%%%DATADIR%%/games/devtest/mods/testeditor/init.lua
+%%DEVTEST%%%%DATADIR%%/games/devtest/mods/testeditor/mod.conf
 %%DEVTEST%%%%DATADIR%%/games/devtest/mods/testentities/armor.lua
 %%DEVTEST%%%%DATADIR%%/games/devtest/mods/testentities/init.lua
 %%DEVTEST%%%%DATADIR%%/games/devtest/mods/testentities/mod.conf
