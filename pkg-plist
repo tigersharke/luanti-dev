@@ -207,6 +207,7 @@ share/icons/hicolor/scalable/apps/luanti.svg
 %%DATADIR%%/builtin/mainmenu/dlg_create_world.lua
 %%DATADIR%%/builtin/mainmenu/dlg_delete_content.lua
 %%DATADIR%%/builtin/mainmenu/dlg_delete_world.lua
+%%DATADIR%%/builtin/mainmenu/dlg_rebind_keys.lua
 %%DATADIR%%/builtin/mainmenu/dlg_register.lua
 %%DATADIR%%/builtin/mainmenu/dlg_reinstall_mtg.lua
 %%DATADIR%%/builtin/mainmenu/dlg_rename_modpack.lua
