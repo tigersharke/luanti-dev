@@ -1,6 +1,6 @@
 # PORTNAME block
 PORTNAME=		luanti
-DISTVERSION=	g20250514
+DISTVERSION=	g20250516
 
 CATEGORIES=		games
 MASTER_SITES=	GH
@@ -16,7 +16,6 @@ WWW=			https://www.luanti.org/
 # License block
 LICENSE=		LGPL21+
 LICENSE_FILE=	${WRKSRC}/doc/lgpl-2.1.txt
-#work/luanti-9b2ee1dd5d330c41af2b96f748aa01dc4062e296/doc/lgpl-2.1.txt
 
 # dependencies
 LIB_DEPENDS=	libzstd.so:archivers/zstd \
@@ -27,7 +26,7 @@ USES=			cmake iconv:wchar_t sqlite ninja:make pkgconfig:build
 USE_GITHUB=		nodefault
 GH_ACCOUNT=		luanti-org
 GH_PROJECT=		luanti
-GH_TAGNAME=		d19640d57f75fc697fe985e0aa8a84228cf8c4f4
+GH_TAGNAME=		d11d90fb8d44dd1ac385c669bc2d368941c0a27d
 
 # uses=cmake related variables
 CMAKE_ARGS=		-DCMAKE_BUILD_TYPE="MinSizeRel" \
