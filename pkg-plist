@@ -2,7 +2,7 @@
 %%SERVER%%bin/luantiserver
 etc/minetest.conf.example
 %%SERVER%%etc/rc.d/luanti
-share/applications/net.minetest.minetest.desktop
+share/applications/org.luanti.luanti.desktop
 %%DOCS%%%%DOCSDIR%%/README.md
 %%DOCS%%%%DOCSDIR%%/client_lua_api.md
 %%DOCS%%%%DOCSDIR%%/lua_api.md
@@ -984,4 +984,4 @@ share/icons/hicolor/scalable/apps/luanti.svg
 %%CLIENT%%%%DATADIR%%/textures/base/pack/zoom.png
 %%CLIENT%%share/man/man6/luanti.6.gz
 %%SERVER%%share/man/man6/luantiserver.6.gz
-share/metainfo/net.minetest.minetest.metainfo.xml
+share/metainfo/org.luanti.luanti.metainfo.xml
