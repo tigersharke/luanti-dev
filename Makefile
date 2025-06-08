@@ -1,6 +1,6 @@
 # PORTNAME block
 PORTNAME=		luanti
-DISTVERSION=	g20250601
+DISTVERSION=	g20250607
 
 CATEGORIES=		games
 MASTER_SITES=	GH
@@ -26,13 +26,15 @@ USES=			cmake iconv:wchar_t sqlite ninja:make pkgconfig:build
 USE_GITHUB=		nodefault
 GH_ACCOUNT=		luanti-org
 GH_PROJECT=		luanti
-GH_TAGNAME=		fde6384a099143a4a3033e090d61296b1d15f051
+GH_TAGNAME=		aba2b6638ec76488a5e12a940c35eff0d80fda96
 
 # uses=cmake related variables
 CMAKE_ARGS=		-DCMAKE_BUILD_TYPE="MinSizeRel" \
 				-DCUSTOM_EXAMPLE_CONF_DIR="${PREFIX}/etc" \
 				-DCMAKE_CXX_FLAGS="-stdlib=libc++"
 #				-DCMAKE_FETCHCONTENT_FULLY_DISCONNECTED="FALSE"
+
+TEST_ENV=		${MAKE_ENV} LC_ALL=C.UTF-8
 
 # conflicts
 CONFLICTS=		luanti minetest irrlichtMt minetest-dev irrlicht-minetest
@@ -173,7 +175,7 @@ LIB_DEPENDS+=	libogg.so:audio/libogg libvorbisfile.so:audio/libvorbis
 .endif
 
 # In addition to below, `make check-plist` wants the %%SERVER%% omitted from the etc/rc.d/luanti line 
-# but if I do not et the config to build the server then it fails to find etc/rc.d/luanti to install,
+# but if I do not set the config to build the server then it fails to find etc/rc.d/luanti to install,
 # so it is best to include the %%SERVER%% and ignore what check-plist wants.
 .if ${PORT_OPTIONS:MSERVER}
 USE_RC_SUBR=	${PORTNAME}
@@ -181,6 +183,14 @@ USE_RC_SUBR=	${PORTNAME}
 # At that time the files/luanti.in will need to be modified for the user and group defined.
 USERS=			minetest #USERS=			${PORTNAME}
 GROUPS=			minetest #GROUPS=		${PORTNAME}
+.endif
+
+do-test-UNITTESTS-on:
+.if ${PORT_OPTIONS:MCLIENT}
+	cd ${WRKDIR} && ${SETENV} ${TEST_ENV} ${STAGEDIR}${PREFIX}/bin/luanti --run-unittests
+.endif
+.if ${PORT_OPTIONS:MSERVER}
+	cd ${WRKDIR} && ${SETENV} ${TEST_ENV} ${STAGEDIR}${PREFIX}/bin/luantiserver --run-unittests
 .endif
 
 # Exactly why this must be done this way eludes me but this works and satisfies the install needs.
