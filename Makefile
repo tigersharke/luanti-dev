@@ -1,6 +1,6 @@
 # PORTNAME block
 PORTNAME=		luanti
-DISTVERSION=	g20251022
+DISTVERSION=	g20251025
 
 CATEGORIES=		games
 MASTER_SITES=	GH
@@ -26,12 +26,12 @@ USES=			cmake iconv:wchar_t sqlite ninja:make pkgconfig:build
 USE_GITHUB=		nodefault
 GH_ACCOUNT=		luanti-org
 GH_PROJECT=		luanti
-GH_TAGNAME=		35357e430053ea76ea4d3f148c01abc474200f4d
+GH_TAGNAME=		377cdfb6010b7ff091adc38f17ccd5b3df286b7a
 
 # uses=cmake related variables
 CMAKE_ARGS=		-DCMAKE_BUILD_TYPE="MinSizeRel" \
-				-DCUSTOM_EXAMPLE_CONF_DIR="${PREFIX}/etc" \
-				-DCMAKE_CXX_FLAGS="-stdlib=libc++"
+				-DCUSTOM_EXAMPLE_CONF_DIR="${PREFIX}/etc"
+#				-DCMAKE_CXX_FLAGS="-stdlib=libc++"
 #				-DCMAKE_FETCHCONTENT_FULLY_DISCONNECTED="FALSE"
 
 TEST_ENV=		${MAKE_ENV} LC_ALL=C.UTF-8
@@ -79,7 +79,7 @@ NEEDS_DESC=					Client essentials
 NLS_DESC=					Native Language Support (ENABLE_GETTEXT)
 OPENGL3_DESC=				Enable OpenGL 3+ driver (likely needs sdl2 built with OPENGLES)
 OPENGL_DESC=				Enable OpenGL driver
-OPENSSLCRYPTO_DESC=			Enable openssl libcrypto SHA
+OPENSSLCRYPTO_DESC=			Enable openssl libcrypto (faster SHA1 and SHA2 hashing)
 PGSQL_DESC=					Enable PostgreSQL map backend
 PROFILING_DESC=				Use gprof for profiling (USE_GPROF)
 PROMETHEUS_DESC=			Build with Prometheus metrics exporter
