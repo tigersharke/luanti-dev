@@ -1,6 +1,6 @@
 # PORTNAME block
 PORTNAME=		luanti
-DISTVERSION=	g20251030
+DISTVERSION=	g20251101
 
 CATEGORIES=		games
 MASTER_SITES=	GH
@@ -26,7 +26,7 @@ USES=			cmake iconv:wchar_t sqlite ninja:make pkgconfig:build
 USE_GITHUB=		nodefault
 GH_ACCOUNT=		luanti-org
 GH_PROJECT=		luanti
-GH_TAGNAME=		1ead48c58b316b376e02d135a9a043201a72b41a
+GH_TAGNAME=		36f052198cb836507eb7b5c0d69af81cb067aed3
 
 # uses=cmake related variables
 CMAKE_ARGS=		-DCMAKE_BUILD_TYPE="MinSizeRel" \
@@ -71,7 +71,7 @@ DOCS_DESC=					Build and install documentation (via doxygen)
 #GITTRACY_DESC=				Fetch Tracy git tag --build fails-- --purpose uncertain--
 GLES2_DESC=					Enable OpenGL ES 2+ driver
 GRAPHICS_DESC=				Graphics support
-LEVELDB_DESC=				Enable LevelDB backend --broken - build fails--
+LEVELDB_DESC=				Enable LevelDB backend --broken: leveldb port build fails--
 LTO_DESC=					Build with IPO/LTO optimizations (smaller and more efficient than regular build)
 MISC_DESC=					Other options
 NCURSES_DESC=				Enables server side terminal (cli option: --terminal) (ENABLE_CURSES)

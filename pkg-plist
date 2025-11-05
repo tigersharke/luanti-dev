@@ -261,6 +261,8 @@ share/icons/hicolor/scalable/apps/luanti.svg
 %%CLIENT%%%%DATADIR%%/client/shaders/extract_bloom/opengl_vertex.glsl
 %%CLIENT%%%%DATADIR%%/client/shaders/fxaa/opengl_fragment.glsl
 %%CLIENT%%%%DATADIR%%/client/shaders/fxaa/opengl_vertex.glsl
+%%CLIENT%%%%DATADIR%%/client/shaders/inventory_shader/opengl_fragment.glsl
+%%CLIENT%%%%DATADIR%%/client/shaders/inventory_shader/opengl_vertex.glsl
 %%CLIENT%%%%DATADIR%%/client/shaders/minimap_shader/opengl_fragment.glsl
 %%CLIENT%%%%DATADIR%%/client/shaders/minimap_shader/opengl_vertex.glsl
 %%CLIENT%%%%DATADIR%%/client/shaders/nodes_shader/opengl_fragment.glsl
