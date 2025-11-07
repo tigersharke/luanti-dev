@@ -1,6 +1,6 @@
 # PORTNAME block
 PORTNAME=		luanti
-DISTVERSION=	g20251105
+DISTVERSION=	g20251106
 
 CATEGORIES=		games
 MASTER_SITES=	GH
@@ -26,7 +26,7 @@ USES=			cmake iconv:wchar_t sqlite ninja:make pkgconfig:build
 USE_GITHUB=		nodefault
 GH_ACCOUNT=		luanti-org
 GH_PROJECT=		luanti
-GH_TAGNAME=		8042b5512fe5912de5604dcb6cb3eb7a7953e881
+GH_TAGNAME=		298a27c743b6290179eebb7cef3e442e1a559741
 
 # uses=cmake related variables
 CMAKE_ARGS=		-DCMAKE_BUILD_TYPE="MinSizeRel" \
@@ -228,7 +228,7 @@ post-install:
 	@${ECHO_MSG} "-->  Local network issues could cause singleplayer to fail. "
 	@${ECHO_MSG} " "
 	@${ECHO_MSG} "-->  Alternate graphics driver may be set in client config, must be set to get used."
-	@${ECHO_MSG} "     -- One in minetest config, opengles likely needs sdl option built with it also."
+	@${ECHO_MSG} "     -- One in luanti config, opengles likely needs sdl option built with it also."
 	@${ECHO_MSG} " "
 	@${ECHO_MSG} " "
 
