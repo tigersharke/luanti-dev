@@ -211,6 +211,7 @@ share/icons/hicolor/scalable/apps/luanti.svg
 %%DATADIR%%/builtin/mainmenu/credits.json
 %%DATADIR%%/builtin/mainmenu/dlg_clients_list.lua
 %%DATADIR%%/builtin/mainmenu/dlg_config_world.lua
+%%DATADIR%%/builtin/mainmenu/dlg_confirm_exit.lua
 %%DATADIR%%/builtin/mainmenu/dlg_create_world.lua
 %%DATADIR%%/builtin/mainmenu/dlg_delete_content.lua
 %%DATADIR%%/builtin/mainmenu/dlg_delete_world.lua
