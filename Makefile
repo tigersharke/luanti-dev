@@ -1,52 +1,48 @@
-# PORTNAME block
+### PORTNAME block ##--------------------------------------------------------------------------------------
 PORTNAME=		luanti
-DISTVERSION=	g20251209
-
+DISTVERSION=	g20251210
 CATEGORIES=		games
 MASTER_SITES=	GH
 PKGNAMESUFFIX=	-dev
 DISTNAME=		${PORTNAME}-${GH_TAGNAME}
 DIST_SUBDIR=	${PORTNAME}${PKGNAMESUFFIX}
 
-# Maintainer block
+# Maintainer block ##--------------------------------------------------------------------------------------
 MAINTAINER=		nope@nothere
 COMMENT=		Near-infinite-world block sandbox game
 WWW=			https://www.luanti.org/
 
-# License block
+### License block ##---------------------------------------------------------------------------------------
 LICENSE=		LGPL21+
 LICENSE_FILE=	${WRKSRC}/doc/lgpl-2.1.txt
 
-# dependencies
+# dependencies ##------------------------------------------------------------------------------------------
 LIB_DEPENDS=	libzstd.so:archivers/zstd \
 				libfreetype.so:print/freetype2
 
-# uses block
+### uses block ##------------------------------------------------------------------------------------------
 USES=			cmake iconv:wchar_t sqlite ninja:make pkgconfig:build
 USE_GITHUB=		nodefault
 GH_ACCOUNT=		luanti-org
 GH_PROJECT=		luanti
-GH_TAGNAME=		f6c472fd2c93f8ca526c672a5a0c5ad44b2981bf
+GH_TAGNAME=		87669f982c9d998ca68c86bb50fdb66a8a75fb87
 
-# uses=cmake related variables
+# USES=cmake related variables ##--------------------------------------------------------------------------
 CMAKE_ARGS=		-DCMAKE_BUILD_TYPE="MinSizeRel" \
 				-DCUSTOM_EXAMPLE_CONF_DIR="${PREFIX}/etc"
 #				-DCMAKE_CXX_FLAGS="-stdlib=libc++"
 #				-DCMAKE_FETCHCONTENT_FULLY_DISCONNECTED="FALSE"
 
+### Make block ##------------------------------------------------------------------------------------------
 TEST_ENV=		${MAKE_ENV} LC_ALL=C.UTF-8
-
-# conflicts
+### conflicts ##-------------------------------------------------------------------------------------------
 CONFLICTS=		luanti minetest irrlichtMt minetest-dev irrlicht-minetest
-
-# wrksrc block
+### wrksrc block ##----------------------------------------------------------------------------------------
 WRKSRC=			${WRKDIR}/${PORTNAME}-${GH_TAGNAME}
-
-# packaging list block
+### packaging list block ##--------------------------------------------------------------------------------
 #DOCS=		*
-#PORTDATA=		*
-
-# options definitions
+PORTDATA=		*
+### options definitions ##---------------------------------------------------------------------------------
 OPTIONS_DEFAULT=			CURL DOCS LTO OPENSSLCRYPTO SOUND SPATIAL SYSTEM_LUAJIT SYSTEM_FONTS SYSTEM_GMP SYSTEM_JSONCPP CLIENT OPENGL
 OPTIONS_GROUP=				BUILD DATABASE MISC NEEDS SYSTEM
 OPTIONS_GROUP_BUILD=		BENCHMARKS DEVTEST DOCS NCURSES PROFILING PROMETHEUS UNITTESTS #TRACY GITTRACY
@@ -59,8 +55,7 @@ OPTIONS_MULTI_SOFTWARE=		CLIENT SERVER
 OPTIONS_SINGLE=				GRAPHICS
 OPTIONS_SINGLE_GRAPHICS=	GLES2 OPENGL OPENGL3
 OPTIONS_SUB=				yes
-
-# options descriptions
+### options descriptions ##--------------------------------------------------------------------------------
 BENCHMARKS_DESC=			Build benchmarks (Adds some benchmark chat commands)
 BUILD_DESC=					Admin/Dev needs
 CLIENT_DESC=				Build client, add graphics and sdl2 support, dependencies
@@ -96,7 +91,7 @@ SYSTEM_LUAJIT_DESC=			Use or install luajit from ports (instead of bundled lua)
 #TRACY_DESC=					Build with Tracy frame and sampling profiler --build fails--
 UNITTESTS_DESC=				Build unit test sources (BUILD_UNITTESTS)
 
-# options helpers
+### options helpers ##-------------------------------------------------------------------------------------
 BENCHMARKS_CMAKE_BOOL=		BUILD_BENCHMARKS
 #TRACY_BUILD_DEPENDS=		tracy>0:devel/tracy
 #TRACY_CMAKE_BOOL=			BUILD_WITH_TRACY
@@ -174,7 +169,7 @@ USES+=			openal
 LIB_DEPENDS+=	libogg.so:audio/libogg libvorbisfile.so:audio/libvorbis
 .endif
 
-# In addition to below, `make check-plist` wants the %%SERVER%% omitted from the etc/rc.d/luanti line 
+# In addition to below, `make check-plist` wants the %%SERVER%% omitted from the etc/rc.d/luanti line
 # but if I do not set the config to build the server then it fails to find etc/rc.d/luanti to install,
 # so it is best to include the %%SERVER%% and ignore what check-plist wants.
 .if ${PORT_OPTIONS:MSERVER}
@@ -219,7 +214,6 @@ pre-install:
 post-stage:
 	${RM} ${STAGEDIR}${LOCALBASE}/bin/minetest
 	${RM} ${STAGEDIR}${LOCALBASE}/bin/minetestserver
-
 
 post-install:
 	@${ECHO_MSG} " "

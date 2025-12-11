@@ -6,8 +6,8 @@ cp ../pkg-plist /var/tmp/minetest-dev_pkg-plist
 echo "adding conditional list tags"
 
 cat /var/tmp/minetest-dev_pkg-plist | \
+sed '/^\/you/d' | \
 sed \
--e 's#^\/you\/have\/to\/check\/what\/makeplist\/gives\/you##' \
 -e '/^$/d' \
 -e 's#^share\/locale#\%\%CLIENT\%\%\%\%NLS\%\%share\/locale#g' \
 -e 's#^\%\%PORT#\%\%#g' \
