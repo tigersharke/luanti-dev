@@ -1,6 +1,6 @@
 ### PORTNAME block ##--------------------------------------------------------------------------------------
 PORTNAME=		luanti
-DISTVERSION=	g20251214
+DISTVERSION=	g20251220
 CATEGORIES=		games
 MASTER_SITES=	GH
 PKGNAMESUFFIX=	-dev
@@ -25,7 +25,7 @@ USES=			cmake iconv:wchar_t sqlite ninja:make pkgconfig:build
 USE_GITHUB=		nodefault
 GH_ACCOUNT=		luanti-org
 GH_PROJECT=		luanti
-GH_TAGNAME=		9c37b46e1f0514a3cb2b5e5d844f42fa8e044f84
+GH_TAGNAME=		0535b0c09d94cbefa14770c067e5b41e8976cbf1
 
 # USES=cmake related variables ##--------------------------------------------------------------------------
 CMAKE_ARGS=		-DCMAKE_BUILD_TYPE="MinSizeRel" \
@@ -226,12 +226,6 @@ post-install:
 	@${ECHO_MSG} " "
 	@${ECHO_MSG} " "
 
-#----------------------------------------------------------------------
-# Warning: you might not need LIB_DEPENDS on libGL.so
-# Warning: you might not need LIB_DEPENDS on libSDL2.so
-# Warning: you might not need LIB_DEPENDS on libSDL2_ttf.so
-# Warning: you might not need LIB_DEPENDS on libopenal.so.1
-#----------------------------------------------------------------------
 #----------------------------------------------------------------------
 #CMake Warning:
 #  Manually-specified variables were not used by the project:
