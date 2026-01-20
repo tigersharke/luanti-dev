@@ -944,7 +944,6 @@ share/icons/hicolor/scalable/apps/luanti.svg
 %%CLIENT%%%%DATADIR%%/textures/base/pack/jump_btn.png
 %%CLIENT%%%%DATADIR%%/textures/base/pack/loading_screenshot.png
 %%CLIENT%%%%DATADIR%%/textures/base/pack/logo.png
-%%CLIENT%%%%DATADIR%%/textures/base/pack/menu_bg.png
 %%CLIENT%%%%DATADIR%%/textures/base/pack/menu_header.png
 %%CLIENT%%%%DATADIR%%/textures/base/pack/minimap_btn.png
 %%CLIENT%%%%DATADIR%%/textures/base/pack/minimap_mask_round.png
