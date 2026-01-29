@@ -239,6 +239,9 @@ share/icons/hicolor/scalable/apps/luanti.svg
 %%DATADIR%%/builtin/profiler/reporter.lua
 %%DATADIR%%/builtin/profiler/sampling.lua
 %%DATADIR%%/builtin/settingtypes.txt
+%%DATADIR%%/builtin/sscsm_client/init.lua
+%%DATADIR%%/builtin/sscsm_client/register.lua
+%%DATADIR%%/builtin/sscsm_server/init.lua
 %%CLIENT%%%%DATADIR%%/client/shaders/3d_interlaced_merge/opengl_fragment.glsl
 %%CLIENT%%%%DATADIR%%/client/shaders/3d_interlaced_merge/opengl_vertex.glsl
 %%CLIENT%%%%DATADIR%%/client/shaders/Irrlicht/OneTextureBlend.fsh
