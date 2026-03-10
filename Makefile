@@ -1,6 +1,6 @@
 ### PORTNAME block ##--------------------------------------------------------------------------------------
 PORTNAME=		luanti
-DISTVERSION=	g20260228
+DISTVERSION=	g20260308
 CATEGORIES=		games
 MASTER_SITES=	GH
 PKGNAMESUFFIX=	-dev
@@ -25,7 +25,7 @@ USES=			cmake iconv:wchar_t sqlite ninja:make pkgconfig:build
 USE_GITHUB=		nodefault
 GH_ACCOUNT=		luanti-org
 GH_PROJECT=		luanti
-GH_TAGNAME=		d742cd1177524b2bad12cb0029b8a42d525d18be
+GH_TAGNAME=		3b67e73bc3402291bd3790dc2b8f3932be1b42b4
 
 # USES=cmake related variables ##--------------------------------------------------------------------------
 CMAKE_ARGS=		-DCMAKE_BUILD_TYPE="MinSizeRel" \
@@ -72,7 +72,7 @@ MISC_DESC=					Other options
 NCURSES_DESC=				Enables server side terminal (cli option: --terminal) (ENABLE_CURSES)
 NEEDS_DESC=					Client essentials
 NLS_DESC=					Native Language Support (ENABLE_GETTEXT)
-OPENGL3_DESC=				Enable OpenGL 3+ driver (likely needs sdl2 built with OPENGLES)
+OPENGL3_DESC=				Enable OpenGL 3+ driver
 OPENGL_DESC=				Enable OpenGL driver
 OPENSSLCRYPTO_DESC=			Enable openssl libcrypto (faster SHA1 and SHA2 hashing)
 PGSQL_DESC=					Enable PostgreSQL map backend
