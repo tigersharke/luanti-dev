@@ -111,8 +111,10 @@ share/icons/hicolor/scalable/apps/luanti.svg
 %%DATADIR%%/builtin/common/tests/math_spec.lua
 %%DATADIR%%/builtin/common/tests/misc_helpers_spec.lua
 %%DATADIR%%/builtin/common/tests/serialize_spec.lua
+%%DATADIR%%/builtin/common/tests/vector2_spec.lua
 %%DATADIR%%/builtin/common/tests/vector_spec.lua
 %%DATADIR%%/builtin/common/vector.lua
+%%DATADIR%%/builtin/common/vector2.lua
 %%DATADIR%%/builtin/emerge/env.lua
 %%DATADIR%%/builtin/emerge/init.lua
 %%DATADIR%%/builtin/emerge/register.lua
@@ -897,6 +899,7 @@ share/icons/hicolor/scalable/apps/luanti.svg
 %%DEVTEST%%%%DATADIR%%/games/devtest/mods/unittests/textures/unittests_stick.png
 %%DEVTEST%%%%DATADIR%%/games/devtest/mods/unittests/textures/unittests_torch.png
 %%DEVTEST%%%%DATADIR%%/games/devtest/mods/unittests/textures/unittests_unrepairable_tool.png
+%%DEVTEST%%%%DATADIR%%/games/devtest/mods/unittests/vector2.lua
 %%DEVTEST%%%%DATADIR%%/games/devtest/mods/unittests/version.lua
 %%DEVTEST%%%%DATADIR%%/games/devtest/mods/util_commands/init.lua
 %%DEVTEST%%%%DATADIR%%/games/devtest/mods/util_commands/mod.conf
