@@ -513,6 +513,7 @@ share/icons/hicolor/scalable/apps/luanti.svg
 %%DEVTEST%%%%DATADIR%%/games/devtest/mods/testentities/observers.lua
 %%DEVTEST%%%%DATADIR%%/games/devtest/mods/testentities/pointable.lua
 %%DEVTEST%%%%DATADIR%%/games/devtest/mods/testentities/selectionbox.lua
+%%DEVTEST%%%%DATADIR%%/games/devtest/mods/testentities/step_up_mode.lua
 %%DEVTEST%%%%DATADIR%%/games/devtest/mods/testentities/textures/testentities_armorball.png
 %%DEVTEST%%%%DATADIR%%/games/devtest/mods/testentities/textures/testentities_cube1.png
 %%DEVTEST%%%%DATADIR%%/games/devtest/mods/testentities/textures/testentities_cube2.png
