@@ -1,6 +1,6 @@
 ### PORTNAME block ##--------------------------------------------------------------------------------------
 PORTNAME=		luanti
-DISTVERSION=	g20260428
+DISTVERSION=	g20260502
 CATEGORIES=		games
 MASTER_SITES=	GH
 PKGNAMESUFFIX=	-dev
@@ -22,10 +22,10 @@ LIB_DEPENDS=	libzstd.so:archivers/zstd \
 
 ### uses block ##------------------------------------------------------------------------------------------
 USES=			cmake iconv:wchar_t sqlite ninja:make pkgconfig:build
-USE_GITHUB=		nodefault
+USE_GITHUB=		yes
 GH_ACCOUNT=		luanti-org
 GH_PROJECT=		luanti
-GH_TAGNAME=		cd9fd33804950e2803ab7907b3f267fda7edb0fd
+GH_TAGNAME=		bb7fcd32c7da2f5610458e679f567dbc09a1c909
 
 # USES=cmake related variables ##--------------------------------------------------------------------------
 CMAKE_ARGS=		-DCMAKE_BUILD_TYPE="MinSizeRel" \
@@ -38,10 +38,10 @@ TEST_ENV=		${MAKE_ENV} LC_ALL=C.UTF-8
 ### conflicts ##-------------------------------------------------------------------------------------------
 CONFLICTS=		luanti minetest irrlichtMt minetest-dev irrlicht-minetest
 ### wrksrc block ##----------------------------------------------------------------------------------------
-WRKSRC=			${WRKDIR}/${PORTNAME}-${GH_TAGNAME}
+#WRKSRC=			${WRKDIR}/${PORTNAME}-${GH_TAGNAME}
 ### packaging list block ##--------------------------------------------------------------------------------
-#DOCS=		*
-#PORTDATA=		*
+DOCS=		*
+PORTDATA=	*
 ### options definitions ##---------------------------------------------------------------------------------
 OPTIONS_DEFAULT=			CURL DOCS LTO OPENSSLCRYPTO SOUND SPATIAL SYSTEM_LUAJIT SYSTEM_FONTS SYSTEM_GMP SYSTEM_JSONCPP CLIENT OPENGL
 OPTIONS_GROUP=				BUILD DATABASE MISC NEEDS SYSTEM
