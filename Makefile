@@ -1,10 +1,9 @@
 ### PORTNAME block ##--------------------------------------------------------------------------------------
 PORTNAME=		luanti
-DISTVERSION=	g20260506
+DISTVERSION=	g20260508
 CATEGORIES=		games
 MASTER_SITES=	GH
 PKGNAMESUFFIX=	-dev
-DISTNAME=		${PORTNAME}-${GH_TAGNAME}
 DIST_SUBDIR=	${PORTNAME}${PKGNAMESUFFIX}
 
 # Maintainer block ##--------------------------------------------------------------------------------------
@@ -25,7 +24,7 @@ USES=			cmake iconv:wchar_t sqlite ninja:make pkgconfig:build
 USE_GITHUB=		yes
 GH_ACCOUNT=		luanti-org
 GH_PROJECT=		luanti
-GH_TAGNAME=		9d5821f3e61db8dd0707fd3e2e9e3d0a0498c643
+GH_TAGNAME=		4765f035388a5f7c249f7c4c996242f3d78bbd7f
 
 # USES=cmake related variables ##--------------------------------------------------------------------------
 CMAKE_ARGS=		-DCMAKE_BUILD_TYPE="MinSizeRel" \
@@ -40,9 +39,7 @@ CONFLICTS=		luanti minetest irrlichtMt minetest-dev irrlicht-minetest
 ### wrksrc block ##----------------------------------------------------------------------------------------
 #WRKSRC=			${WRKDIR}/${PORTNAME}-${GH_TAGNAME}
 ### packaging list block ##--------------------------------------------------------------------------------
-# Enabling these causes a report of duplicate listings
-#DOCS=		*
-#PORTDATA=	*
+#
 ### options definitions ##---------------------------------------------------------------------------------
 OPTIONS_DEFAULT=			CURL DOCS LTO OPENSSLCRYPTO SOUND SPATIAL SYSTEM_LUAJIT SYSTEM_FONTS SYSTEM_GMP SYSTEM_JSONCPP CLIENT OPENGL
 OPTIONS_GROUP=				BUILD DATABASE MISC NEEDS SYSTEM
