@@ -300,10 +300,14 @@ share/icons/hicolor/scalable/apps/luanti.svg
 %%CLIENT%%%%DATADIR%%/fonts/Arimo-Bold.ttf
 %%CLIENT%%%%DATADIR%%/fonts/Arimo-BoldItalic.ttf
 %%CLIENT%%%%DATADIR%%/fonts/Arimo-Italic.ttf
+%%CLIENT%%%%DATADIR%%/fonts/Arimo-LICENSE.txt
+%%CLIENT%%%%DATADIR%%/fonts/Arimo-Regular.ttf
 %%CLIENT%%%%DATADIR%%/fonts/Cousine-Bold.ttf
 %%CLIENT%%%%DATADIR%%/fonts/Cousine-BoldItalic.ttf
 %%CLIENT%%%%DATADIR%%/fonts/Cousine-Italic.ttf
+%%CLIENT%%%%DATADIR%%/fonts/Cousine-LICENSE.txt
 %%CLIENT%%%%DATADIR%%/fonts/Cousine-Regular.ttf
+%%CLIENT%%%%DATADIR%%/fonts/DroidSansFallbackFull-LICENSE.txt
 %%CLIENT%%%%DATADIR%%/fonts/DroidSansFallbackFull.ttf
 %%DEVTEST%%%%DATADIR%%/games/devtest/.luacheckrc
 %%DEVTEST%%%%DATADIR%%/games/devtest/LICENSE.txt
