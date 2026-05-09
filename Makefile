@@ -37,17 +37,19 @@ TEST_ENV=		${MAKE_ENV} LC_ALL=C.UTF-8
 ### conflicts ##-------------------------------------------------------------------------------------------
 CONFLICTS=		luanti minetest irrlichtMt minetest-dev irrlicht-minetest
 ### wrksrc block ##----------------------------------------------------------------------------------------
-#WRKSRC=			${WRKDIR}/${PORTNAME}-${GH_TAGNAME}
+#
 ### packaging list block ##--------------------------------------------------------------------------------
 #
 ### options definitions ##---------------------------------------------------------------------------------
-OPTIONS_DEFAULT=			CURL DOCS LTO OPENSSLCRYPTO SOUND SPATIAL SYSTEM_LUAJIT SYSTEM_FONTS SYSTEM_GMP SYSTEM_JSONCPP CLIENT OPENGL
+#OPTIONS_DEFAULT=			CURL DOCS LTO OPENSSLCRYPTO SOUND SPATIAL SYSTEM_LUAJIT SYSTEM_FONTS SYSTEM_GMP SYSTEM_JSONCPP CLIENT OPENGL
+OPTIONS_DEFAULT=			CURL DOCS LTO OPENSSLCRYPTO SOUND SPATIAL SYSTEM_LUAJIT SYSTEM_GMP SYSTEM_JSONCPP CLIENT OPENGL
 OPTIONS_GROUP=				BUILD DATABASE MISC NEEDS SYSTEM
 OPTIONS_GROUP_BUILD=		BENCHMARKS DEVTEST DOCS NCURSES PROFILING PROMETHEUS UNITTESTS #TRACY GITTRACY
 OPTIONS_GROUP_DATABASE=		LEVELDB PGSQL REDIS
 OPTIONS_GROUP_MISC=			LTO OPENSSLCRYPTO
 OPTIONS_GROUP_NEEDS=		CURL NLS SDL3 SOUND SPATIAL
-OPTIONS_GROUP_SYSTEM=		SYSTEM_FONTS SYSTEM_GMP SYSTEM_JSONCPP SYSTEM_LUAJIT
+#OPTIONS_GROUP_SYSTEM=		SYSTEM_FONTS SYSTEM_GMP SYSTEM_JSONCPP SYSTEM_LUAJIT
+OPTIONS_GROUP_SYSTEM=		SYSTEM_GMP SYSTEM_JSONCPP SYSTEM_LUAJIT
 OPTIONS_MULTI=				SOFTWARE
 OPTIONS_MULTI_SOFTWARE=		CLIENT SERVER
 OPTIONS_SINGLE=				GRAPHICS
@@ -83,7 +85,7 @@ SOFTWARE_DESC=				Software components
 SOUND_DESC=					Enable sound via openal-soft
 SPATIAL_DESC=				Enable SpatialIndex (Speeds up AreaStores)
 SYSTEM_DESC=				System subsitutes
-SYSTEM_FONTS_DESC=			Use or install default fonts from ports
+#SYSTEM_FONTS_DESC=			Use or install default fonts from ports
 SYSTEM_GMP_DESC=			Use gmp from ports (ENABLE_SYSTEM_GMP)
 SYSTEM_JSONCPP_DESC=		Use jsoncpp from ports (ENABLE_SYSTEM_JSONCPP)
 SYSTEM_LUAJIT_DESC=			Use or install luajit from ports (instead of bundled lua)
@@ -135,8 +137,8 @@ SERVER_CMAKE_BOOL=			BUILD_SERVER
 SOUND_CMAKE_BOOL=			ENABLE_SOUND
 SPATIAL_LIB_DEPENDS=		libspatialindex.so:devel/spatialindex
 SPATIAL_CMAKE_BOOL=			ENABLE_SPATIAL
-SYSTEM_FONTS_RUN_DEPENDS=	${LOCALBASE}/share/fonts/ChromeOS/Arimo-Bold.ttf:x11-fonts/croscorefonts-fonts-ttf \
-							${LOCALBASE}/share/fonts/Droid/DroidSans.ttf:x11-fonts/droid-fonts-ttf
+#SYSTEM_FONTS_RUN_DEPENDS=	${LOCALBASE}/share/fonts/ChromeOS/Arimo-Bold.ttf:x11-fonts/croscorefonts-fonts-ttf \
+#							${LOCALBASE}/share/fonts/Droid/DroidSans.ttf:x11-fonts/droid-fonts-ttf
 SYSTEM_GMP_LIB_DEPENDS=		libgmp.so:math/gmp
 SYSTEM_GMP_CMAKE_BOOL=		ENABLE_SYSTEM_GMP
 SYSTEM_GMP_CMAKE_ON=		-DGMP_INCLUDE_DIR="${PREFIX}/include"
@@ -155,7 +157,6 @@ CMAKE_ARGS+=	-DENABLE_LUAJIT="ON" \
 				-DREQUIRE_LUAJIT="ON"
 .endif
 
-# It used to be such that <OPTION>_USE= GL+=gl,opengl would satisfy, but `make test` does not agree.
 .if ${PORT_OPTIONS:MCLIENT} && ${PORT_OPTIONS:MOPENGL}
 USE_GL+=		glu opengl
 USE_XORG+=		xi
@@ -197,43 +198,36 @@ do-test-UNITTESTS-on:
 	cd ${WRKDIR} && ${SETENV} ${TEST_ENV} ${STAGEDIR}${PREFIX}/bin/luantiserver --run-unittests
 .endif
 
-# Exactly why this must be done this way eludes me but this works and satisfies the install needs.
-.if ${PORT_OPTIONS:MSYSTEM_FONTS}
-pre-install:
-	${RM} ${LOCALBASE}/share/luanti/fonts/Arimo-Bold.ttf
-	${RM} ${LOCALBASE}/share/luanti/fonts/Arimo-BoldItalic.ttf
-	${RM} ${LOCALBASE}/share/luanti/fonts/Arimo-Italic.ttf
-	${RM} ${LOCALBASE}/share/luanti/fonts/Cousine-Bold.ttf
-	${RM} ${LOCALBASE}/share/luanti/fonts/Cousine-BoldItalic.ttf
-	${RM} ${LOCALBASE}/share/luanti/fonts/Cousine-Italic.ttf
-	${RM} ${LOCALBASE}/share/luanti/fonts/Cousine-Regular.ttf
-	${RM} ${LOCALBASE}/share/luanti/fonts/DroidSansFallbackFull.ttf
-	${MKDIR} ${LOCALBASE}/share/luanti/fonts
-	${LN} -s ${LOCALBASE}/share/fonts/ChromeOS/Arimo-Bold.ttf ${LOCALBASE}/share/luanti/fonts/Arimo-Bold.ttf
-	${LN} -s ${LOCALBASE}/share/fonts/ChromeOS/Arimo-BoldItalic.ttf ${LOCALBASE}/share/luanti/fonts/Arimo-BoldItalic.ttf
-	${LN} -s ${LOCALBASE}/share/fonts/ChromeOS/Arimo-Italic.ttf ${LOCALBASE}/share/luanti/fonts/Arimo-Italic.ttf
-	${LN} -s ${LOCALBASE}/share/fonts/ChromeOS/Cousine-Bold.ttf ${LOCALBASE}/share/luanti/fonts/Cousine-Bold.ttf
-	${LN} -s ${LOCALBASE}/share/fonts/ChromeOS/Cousine-BoldItalic.ttf ${LOCALBASE}/share/luanti/fonts/Cousine-BoldItalic.ttf
-	${LN} -s ${LOCALBASE}/share/fonts/ChromeOS/Cousine-Italic.ttf ${LOCALBASE}/share/luanti/fonts/Cousine-Italic.ttf
-	${LN} -s ${LOCALBASE}/share/fonts/ChromeOS/Cousine-Regular.ttf ${LOCALBASE}/share/luanti/fonts/Cousine-Regular.ttf
-	${LN} -s ${LOCALBASE}/share/fonts/Droid/DroidSansFallbackFull.ttf ${LOCALBASE}/share/luanti/fonts/DroidSansFallbackFull.ttf
-.endif
+# It turns out that hard links or relative links do not work for luanti and ordinary symbolic links fail to work as desired.
+#.if ${PORT_OPTIONS:MSYSTEM_FONTS} && ${PORT_OPTIONS:MCLIENT}
+#post-stage:
+#	${RM} ${STAGEDIR}${LOCALBASE}/share/luanti/fonts/Arimo-Bold.ttf
+#	${RM} ${STAGEDIR}${LOCALBASE}/share/luanti/fonts/Arimo-BoldItalic.ttf
+#	${RM} ${STAGEDIR}${LOCALBASE}/share/luanti/fonts/Arimo-Italic.ttf
+#	${RM} ${STAGEDIR}${LOCALBASE}/share/luanti/fonts/Arimo-Regular.ttf
+#	${RM} ${STAGEDIR}${LOCALBASE}/share/luanti/fonts/Arimo-LICENSE.txt
+#	${RM} ${STAGEDIR}${LOCALBASE}/share/luanti/fonts/Cousine-Bold.ttf
+#	${RM} ${STAGEDIR}${LOCALBASE}/share/luanti/fonts/Cousine-BoldItalic.ttf
+#	${RM} ${STAGEDIR}${LOCALBASE}/share/luanti/fonts/Cousine-Italic.ttf
+#	${RM} ${STAGEDIR}${LOCALBASE}/share/luanti/fonts/Cousine-LICENSE.txt
+#	${RM} ${STAGEDIR}${LOCALBASE}/share/luanti/fonts/Cousine-Regular.ttf
+#	${RM} ${STAGEDIR}${LOCALBASE}/share/luanti/fonts/DroidSansFallbackFull-LICENSE.txt
+#	${RM} ${STAGEDIR}${LOCALBASE}/share/luanti/fonts/DroidSansFallbackFull.ttf
+#
+#	${LN} -L ${LOCALBASE}/share/fonts/ChromeOS/Arimo-Bold.ttf ${STAGEDIR}${LOCALBASE}/share/luanti/fonts/Arimo-Bold.ttf
+#	${LN} -L ${LOCALBASE}/share/fonts/ChromeOS/Arimo-BoldItalic.ttf ${STAGEDIR}${LOCALBASE}/share/luanti/fonts/Arimo-BoldItalic.ttf
+#	${LN} -L ${LOCALBASE}/share/fonts/ChromeOS/Arimo-Italic.ttf ${STAGEDIR}${LOCALBASE}/share/luanti/fonts/Arimo-Italic.ttf
+#	${LN} -L ${LOCALBASE}/share/fonts/ChromeOS/Cousine-Bold.ttf ${STAGEDIR}${LOCALBASE}/share/luanti/fonts/Cousine-Bold.ttf
+#	${LN} -L ${LOCALBASE}/share/fonts/ChromeOS/Cousine-BoldItalic.ttf ${STAGEDIR}${LOCALBASE}/share/luanti/fonts/Cousine-BoldItalic.ttf
+#	${LN} -L ${LOCALBASE}/share/fonts/ChromeOS/Cousine-Italic.ttf ${STAGEDIR}${LOCALBASE}/share/luanti/fonts/Cousine-Italic.ttf
+#	${LN} -L ${LOCALBASE}/share/fonts/ChromeOS/Cousine-Regular.ttf ${STAGEDIR}${LOCALBASE}/share/luanti/fonts/Cousine-Regular.ttf
+#	${LN} -L ${LOCALBASE}/share/fonts/Droid/DroidSansFallbackFull.ttf ${STAGEDIR}${LOCALBASE}/share/luanti/fonts/DroidSansFallbackFull.ttf
+#
+#.endif
 
 # These are temporary links which might only be useful for transition and a blind update, when used they indicate a deprecated solution.
-post-stage:
-	${RM} ${STAGEDIR}${LOCALBASE}/bin/minetest
-	${RM} ${STAGEDIR}${LOCALBASE}/bin/minetestserver
-
-post-install:
-	@${ECHO_MSG} " "
-	@${ECHO_MSG} "-->  "${PREFIX}/etc/"minetest.conf.example explains options and gives their default values. "
-	@${ECHO_MSG} " "
-	@${ECHO_MSG} "-->  Local network issues could cause singleplayer to fail. "
-	@${ECHO_MSG} " "
-	@${ECHO_MSG} "-->  Alternate graphics driver may be set in client config, must be set to get used."
-	@${ECHO_MSG} "     -- One in luanti config, opengles likely needs sdl option built with it also."
-	@${ECHO_MSG} " "
-	@${ECHO_MSG} " "
+#	${RM} ${STAGEDIR}${LOCALBASE}/bin/minetest
+#	${RM} ${STAGEDIR}${LOCALBASE}/bin/minetestserver
 
 #----------------------------------------------------------------------
 #CMake Warning:
