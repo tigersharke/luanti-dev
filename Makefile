@@ -67,9 +67,9 @@ DOCS_DESC=					Build and install documentation (via doxygen) (BUILD_DOCUMENTATIO
 GLES2_DESC=					Enable OpenGL ES 2+ driver (ENABLE_GLES2)
 GRAPHICS_DESC=				Graphics support
 LEVELDB_DESC=				Add leveldb map backend support --broken: leveldb port build fails-- (ENABLE_LEVELDB)
-LTO_DESC=					Build with IPO/LTO optimizations (smaller and more efficient than regular build) (ENABLE_LTO)
+LTO_DESC=					Use IPO/LTO optimizations (smaller and more efficient than regular build) (ENABLE_LTO)
 MISC_DESC=					Other options
-NCURSES_DESC=				Enables server side terminal (cli option: --terminal) (ENABLE_CURSES)
+NCURSES_DESC=				Enable server side terminal (cli option: --terminal) (ENABLE_CURSES)
 NEEDS_DESC=					Client essentials
 NLS_DESC=					Native Language Support (ENABLE_GETTEXT)
 OPENGL3_DESC=				Support OpenGL 3+ driver (ENABLE_OPENGL3)
@@ -80,7 +80,7 @@ PROFILING_DESC=				Use gprof for profiling (USE_GPROF)
 PROMETHEUS_DESC=			Support Prometheus metrics exporter (ENABLE_PROMETHEUS)
 REDIS_DESC=					Add Redis map backend support (ENABLE_REDIS)
 SDL3_DESC=					Choose SDL3 instead of default SDL2 (USE_SDL3)
-SERVER_DESC=				Build server
+SERVER_DESC=				Build server (BUILD_SERVER)
 SOFTWARE_DESC=				Software components
 SOUND_DESC=					Add sound for client via openal-soft (ENABLE_SOUND)
 SPATIAL_DESC=				Speed up AreaStores with SpatialIndex (ENABLE_SPATIAL)
@@ -170,13 +170,8 @@ USE_GL+=		gl
 
 .if ${PORT_OPTIONS:MCLIENT} && ${PORT_OPTIONS:MSOUND}
 USES+=			openal
-#LIB_DEPENDS+=	libogg.so:audio/libogg libvorbisfile.so:audio/libvorbis
+LIB_DEPENDS+=	libvorbisfile.so:audio/libvorbis libvorbis.so:audio/libvorbis libogg.so:audio/libogg
 .endif
-#Error: /usr/local/bin/luanti is linked to /usr/local/lib/libvorbisfile.so.3 from audio/libvorbis but it is not declared as a dependency
-#Warning: you need LIB_DEPENDS+=libvorbisfile.so:audio/libvorbis
-#Error: /usr/local/bin/luanti is linked to /usr/local/lib/libvorbis.so.0 from audio/libvorbis but it is not declared as a dependency
-#Warning: you need LIB_DEPENDS+=libvorbis.so:audio/libvorbis
-#Error: /usr/local/bin/luanti is linked to /usr/local/lib/libogg.so.0 from audio/libogg but it is not declared as a dependency
 
 .if ${PORT_OPTIONS:MCLIENT} && !${PORT_OPTIONS:MSDL3}
 SDL=sdl2,ttf2
@@ -206,9 +201,20 @@ do-test-UNITTESTS-on:
 .endif
 
 post-stage:
-	${RM} ${STAGEDIR}${LOCALBASE}/bin/minetest
-	${RM} ${STAGEDIR}${LOCALBASE}/bin/minetestserver
+	@${RM} ${STAGEDIR}${LOCALBASE}/bin/minetest
+	@${RM} ${STAGEDIR}${LOCALBASE}/bin/minetestserver
 # These are temporary links which might only be useful for transition and a blind update, when used they indicate a deprecated solution.
+
+post-install:
+	@${ECHO_MSG} " "
+	@${ECHO_MSG} "-->  "${PREFIX}/etc/"minetest.conf.example explains options and gives their default values. "
+	@${ECHO_MSG} " "
+	@${ECHO_MSG} "-->  Local network issues could cause singleplayer to fail. "
+	@${ECHO_MSG} " "
+	@${ECHO_MSG} "-->  Alternate graphics driver may be set in client config, must be set to get used."
+	@${ECHO_MSG} "     -- One in luanti config, opengles likely needs sdl option built with it also."
+	@${ECHO_MSG} " "
+	@${ECHO_MSG} " "
 
 # It turns out that hard links or relative links do not work for luanti and ordinary symbolic links fail to work as desired.
 #.if ${PORT_OPTIONS:MSYSTEM_FONTS} && ${PORT_OPTIONS:MCLIENT}

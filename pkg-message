@@ -1,9 +1,0 @@
- 
--->  ${PREFIX}/etc/minetest.conf.example explains options and gives their default values. 
- 
--->  Local network issues could cause singleplayer to fail. 
- 
--->  Alternate graphics driver may be set in client config, must be set to get used.
-     -- One in luanti config, opengles likely needs sdl option built with it also.
- 
-
