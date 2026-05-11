@@ -1,6 +1,6 @@
 ### PORTNAME block ##--------------------------------------------------------------------------------------
 PORTNAME=		luanti
-DISTVERSION=	g20260508
+DISTVERSION=	g20260509
 CATEGORIES=		games
 MASTER_SITES=	GH
 PKGNAMESUFFIX=	-dev
@@ -24,11 +24,12 @@ USES=			cmake iconv:wchar_t sqlite ninja:make pkgconfig:build
 USE_GITHUB=		yes
 GH_ACCOUNT=		luanti-org
 GH_PROJECT=		luanti
-GH_TAGNAME=		4765f035388a5f7c249f7c4c996242f3d78bbd7f
+GH_TAGNAME=		8b3e2c578d2946370b0a4928ab4c7a7976727a18
 
 # USES=cmake related variables ##--------------------------------------------------------------------------
-CMAKE_ARGS=		-DCMAKE_BUILD_TYPE="MinSizeRel" \
-				-DCUSTOM_EXAMPLE_CONF_DIR="${PREFIX}/etc"
+#CMAKE_ARGS=		-DCMAKE_BUILD_TYPE="Release" \
+CMAKE_ARGS=				-DCMAKE_INSTALL_PREFIX="/usr/local" \
+				-DCUSTOM_EXAMPLE_CONF_DIR="${LOCALBASE}/etc"
 #				-DCMAKE_CXX_FLAGS="-stdlib=libc++"
 #				-DCMAKE_FETCHCONTENT_FULLY_DISCONNECTED="FALSE"
 
@@ -41,10 +42,9 @@ CONFLICTS=		luanti minetest irrlichtMt minetest-dev irrlicht-minetest
 ### packaging list block ##--------------------------------------------------------------------------------
 #
 ### options definitions ##---------------------------------------------------------------------------------
-#OPTIONS_DEFAULT=			CURL DOCS LTO OPENSSLCRYPTO SOUND SPATIAL SYSTEM_LUAJIT SYSTEM_FONTS SYSTEM_GMP SYSTEM_JSONCPP CLIENT OPENGL
 OPTIONS_DEFAULT=			CURL DOCS LTO OPENSSLCRYPTO SOUND SPATIAL SYSTEM_LUAJIT SYSTEM_GMP SYSTEM_JSONCPP CLIENT OPENGL
 OPTIONS_GROUP=				BUILD DATABASE MISC NEEDS SYSTEM
-OPTIONS_GROUP_BUILD=		BENCHMARKS DEVTEST DOCS NCURSES PROFILING PROMETHEUS UNITTESTS #TRACY GITTRACY
+OPTIONS_GROUP_BUILD=		BENCHMARKS DEBUG DEVTEST DOCS NCURSES PROFILING PROMETHEUS UNITTESTS #TRACY GITTRACY
 OPTIONS_GROUP_DATABASE=		LEVELDB PGSQL REDIS
 OPTIONS_GROUP_MISC=			LTO OPENSSLCRYPTO
 OPTIONS_GROUP_NEEDS=		CURL NLS SDL3 SOUND SPATIAL
@@ -56,40 +56,40 @@ OPTIONS_SINGLE=				GRAPHICS
 OPTIONS_SINGLE_GRAPHICS=	GLES2 OPENGL OPENGL3
 OPTIONS_SUB=				yes
 ### options descriptions ##--------------------------------------------------------------------------------
-BENCHMARKS_DESC=			Build benchmarks (Adds some benchmark chat commands)
+BENCHMARKS_DESC=			Adds some benchmark chat commands (BUILD_BENCHMARKS)
 BUILD_DESC=					Admin/Dev needs
-CLIENT_DESC=				Build client, add graphics and sdl2 support, dependencies
-CURL_DESC=					Enable cURL support for fetching media: contentdb
+CLIENT_DESC=				Add graphics and sdl2 support, dependencies (BUILD_CLIENT)
+CURL_DESC=					Add support for fetching media via cURL: contentdb (ENABLE_CURL)
 DATABASE_DESC=				Database support
 DEVTEST_DESC=				Install Development Test game also (INSTALL_DEVTEST)
-DOCS_DESC=					Build and install documentation (via doxygen)
-#GITTRACY_DESC=				Fetch Tracy git tag --build fails-- --purpose uncertain--
-GLES2_DESC=					Enable OpenGL ES 2+ driver
+DEBUG_DESC=					Select Debug build by -DCMAKE_BUILD_TYPE=Debug
+DOCS_DESC=					Build and install documentation (via doxygen) (BUILD_DOCUMENTATION)
+GLES2_DESC=					Enable OpenGL ES 2+ driver (ENABLE_GLES2)
 GRAPHICS_DESC=				Graphics support
-LEVELDB_DESC=				Enable LevelDB backend --broken: leveldb port build fails--
-LTO_DESC=					Build with IPO/LTO optimizations (smaller and more efficient than regular build)
+LEVELDB_DESC=				Add leveldb map backend support --broken: leveldb port build fails-- (ENABLE_LEVELDB)
+LTO_DESC=					Build with IPO/LTO optimizations (smaller and more efficient than regular build) (ENABLE_LTO)
 MISC_DESC=					Other options
 NCURSES_DESC=				Enables server side terminal (cli option: --terminal) (ENABLE_CURSES)
 NEEDS_DESC=					Client essentials
 NLS_DESC=					Native Language Support (ENABLE_GETTEXT)
-OPENGL3_DESC=				Enable OpenGL 3+ driver
-OPENGL_DESC=				Enable OpenGL driver
-OPENSSLCRYPTO_DESC=			Enable openssl libcrypto (faster SHA1 and SHA2 hashing)
-PGSQL_DESC=					Enable PostgreSQL map backend
+OPENGL3_DESC=				Support OpenGL 3+ driver (ENABLE_OPENGL3)
+OPENGL_DESC=				Support OpenGL driver (ENABLE_OPENGL)
+OPENSSLCRYPTO_DESC=			Add faster SHA1 and SHA2 hashing via libcrypt from openssl (ENABLE_OPENSSL)
+PGSQL_DESC=					Add PostgreSQL map backend support (ENABLE_POSTGRESQL)
 PROFILING_DESC=				Use gprof for profiling (USE_GPROF)
-PROMETHEUS_DESC=			Build with Prometheus metrics exporter
-REDIS_DESC=					Enable Redis backend
-SDL3_DESC=					Use SDL3 instead of default SDL2
+PROMETHEUS_DESC=			Support Prometheus metrics exporter (ENABLE_PROMETHEUS)
+REDIS_DESC=					Add Redis map backend support (ENABLE_REDIS)
+SDL3_DESC=					Choose SDL3 instead of default SDL2 (USE_SDL3)
 SERVER_DESC=				Build server
 SOFTWARE_DESC=				Software components
-SOUND_DESC=					Enable sound via openal-soft
-SPATIAL_DESC=				Enable SpatialIndex (Speeds up AreaStores)
+SOUND_DESC=					Add sound for client via openal-soft (ENABLE_SOUND)
+SPATIAL_DESC=				Speed up AreaStores with SpatialIndex (ENABLE_SPATIAL)
 SYSTEM_DESC=				System subsitutes
 #SYSTEM_FONTS_DESC=			Use or install default fonts from ports
 SYSTEM_GMP_DESC=			Use gmp from ports (ENABLE_SYSTEM_GMP)
 SYSTEM_JSONCPP_DESC=		Use jsoncpp from ports (ENABLE_SYSTEM_JSONCPP)
-SYSTEM_LUAJIT_DESC=			Use or install luajit from ports (instead of bundled lua)
-#TRACY_DESC=					Build with Tracy frame and sampling profiler --build fails--
+SYSTEM_LUAJIT_DESC=			Use or install luajit from ports (instead of bundled lua) (ENABLE_LUAJIT)
+#TRACY_DESC=				Support Tracy frame and sampling profiler --build fails-- (BUILD_WITH_TRACY)
 UNITTESTS_DESC=				Build unit test sources (BUILD_UNITTESTS)
 
 ### options helpers ##-------------------------------------------------------------------------------------
@@ -107,6 +107,8 @@ CLIENT_USE=	\
 CLIENT_CMAKE_BOOL=			BUILD_CLIENT
 CURL_LIB_DEPENDS=			libcurl.so:ftp/curl
 CURL_CMAKE_BOOL=			ENABLE_CURL
+DEBUG_ON_CMAKE_ARGS+=		-DCMAKE_BUILD_TYPE="Debug"
+DEBUG_OFF_CMAKE_ARGS+=		-DCMAKE_BUILD_TYPE="Release"
 DEVTEST_CMAKE_BOOL=			INSTALL_DEVTEST
 DOCS_CMAKE_BOOL=			BUILD_DOCUMENTATION
 GLES2_USE=					GL+=glesv2
@@ -168,8 +170,13 @@ USE_GL+=		gl
 
 .if ${PORT_OPTIONS:MCLIENT} && ${PORT_OPTIONS:MSOUND}
 USES+=			openal
-LIB_DEPENDS+=	libogg.so:audio/libogg libvorbisfile.so:audio/libvorbis
+#LIB_DEPENDS+=	libogg.so:audio/libogg libvorbisfile.so:audio/libvorbis
 .endif
+#Error: /usr/local/bin/luanti is linked to /usr/local/lib/libvorbisfile.so.3 from audio/libvorbis but it is not declared as a dependency
+#Warning: you need LIB_DEPENDS+=libvorbisfile.so:audio/libvorbis
+#Error: /usr/local/bin/luanti is linked to /usr/local/lib/libvorbis.so.0 from audio/libvorbis but it is not declared as a dependency
+#Warning: you need LIB_DEPENDS+=libvorbis.so:audio/libvorbis
+#Error: /usr/local/bin/luanti is linked to /usr/local/lib/libogg.so.0 from audio/libogg but it is not declared as a dependency
 
 .if ${PORT_OPTIONS:MCLIENT} && !${PORT_OPTIONS:MSDL3}
 SDL=sdl2,ttf2
@@ -198,6 +205,11 @@ do-test-UNITTESTS-on:
 	cd ${WRKDIR} && ${SETENV} ${TEST_ENV} ${STAGEDIR}${PREFIX}/bin/luantiserver --run-unittests
 .endif
 
+post-stage:
+	${RM} ${STAGEDIR}${LOCALBASE}/bin/minetest
+	${RM} ${STAGEDIR}${LOCALBASE}/bin/minetestserver
+# These are temporary links which might only be useful for transition and a blind update, when used they indicate a deprecated solution.
+
 # It turns out that hard links or relative links do not work for luanti and ordinary symbolic links fail to work as desired.
 #.if ${PORT_OPTIONS:MSYSTEM_FONTS} && ${PORT_OPTIONS:MCLIENT}
 #post-stage:
@@ -225,23 +237,6 @@ do-test-UNITTESTS-on:
 #
 #.endif
 
-# These are temporary links which might only be useful for transition and a blind update, when used they indicate a deprecated solution.
-#	${RM} ${STAGEDIR}${LOCALBASE}/bin/minetest
-#	${RM} ${STAGEDIR}${LOCALBASE}/bin/minetestserver
-
-#----------------------------------------------------------------------
-#CMake Warning:
-#  Manually-specified variables were not used by the project:
-#
-#    CMAKE_MODULE_LINKER_FLAGS
-#    CMAKE_SHARED_LINKER_FLAGS
-#    CMAKE_VERBOSE_MAKEFILE
-#    FETCHCONTENT_FULLY_DISCONNECTED
-#    ICONV_INCLUDE_DIR
-#    ICONV_LIBRARIES
-#    LIBICONV_INCLUDE_DIR
-#    LIBICONV_LIBRARIES
-#    LIBICONV_LIBRARY
 #----------------------------------------------------------------------
 
 .include <bsd.port.mk>

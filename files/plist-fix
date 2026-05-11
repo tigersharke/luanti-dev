@@ -23,5 +23,7 @@ sed \
 -e 's#^\%\%DATADIR\%\%/textures#\%\%CLIENT\%\%\%\%DATADIR\%\%/textures#g' \
 -e 's#^\%\%DATADIR\%\%/games/devtest#\%\%DEVTEST\%\%\%\%DATADIR\%\%/games/devtest#g' \
 -e 's#^etc/rc.d/luanti#\%\%SERVER\%\%etc/rc.d/luanti#1' \
+-e 's#^share/applications#\%\%CLIENT\%\%share/applications#1' \
+-e 's#^share/icons#\%\%CLIENT\%\%share/icons#g' \
 > /var/tmp/temporary_pkg-plist-fixed
 cp /var/tmp/temporary_pkg-plist-fixed ../pkg-plist
