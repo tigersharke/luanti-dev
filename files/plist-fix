@@ -13,6 +13,7 @@ sed \
 -e 's#^\%\%PORT#\%\%#g' \
 -e 's#^bin/luantiserver#\%\%SERVER\%\%bin/luantiserver#1' \
 -e 's#^bin/luanti#\%\%CLIENT\%\%bin/luanti#1' \
+-e 's#^etc/minetest.conf.example#\%\%DOCS\%\\%%\%\DOCSDIR\%\%etc/minetest.conf.example#1' \
 -e 's#^\%\%ETCDIR\%\%.conf.example#@sample\ etc/minetest.conf.example\ etc/minetest.conf#' \
 -e 's#^\%\%ETCDIR\%\%.conf.example#@sample\ etc/luanti.conf.example\ etc/luanti.conf#' \
 -e 's#^etc/rc.d/minetest#\%\%SERVER\%\%etc/rc.d/minetest#1' \

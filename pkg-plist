@@ -1,12 +1,12 @@
 %%CLIENT%%bin/luanti
 %%SERVER%%bin/luantiserver
+%%DOCS%\%%%DOCSDIR%%etc/minetest.conf.example
 %%SERVER%%etc/rc.d/luanti
 %%CLIENT%%share/applications/org.luanti.luanti.desktop
 %%DOCS%%%%DOCSDIR%%/README.md
 %%DOCS%%%%DOCSDIR%%/client_lua_api.md
 %%DOCS%%%%DOCSDIR%%/lua_api.md
 %%DOCS%%%%DOCSDIR%%/menu_lua_api.md
-%%DOCS%%%%DOCSDIR%%/minetest.conf.example
 %%DOCS%%%%DOCSDIR%%/texture_packs.md
 %%DOCS%%%%DOCSDIR%%/world_format.md
 %%CLIENT%%share/icons/hicolor/128x128/apps/luanti.png
