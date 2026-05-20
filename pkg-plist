@@ -1,6 +1,6 @@
 %%CLIENT%%bin/luanti
 %%SERVER%%bin/luantiserver
-%%DOCS%\%%%DOCSDIR%%etc/minetest.conf.example
+etc/minetest.conf.example
 %%SERVER%%etc/rc.d/luanti
 %%CLIENT%%share/applications/org.luanti.luanti.desktop
 %%DOCS%%%%DOCSDIR%%/README.md
