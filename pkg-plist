@@ -281,6 +281,8 @@ etc/minetest.conf.example
 %%CLIENT%%%%DATADIR%%/client/shaders/cloud_shader/opengl_vertex.glsl
 %%CLIENT%%%%DATADIR%%/client/shaders/extract_bloom/opengl_fragment.glsl
 %%CLIENT%%%%DATADIR%%/client/shaders/extract_bloom/opengl_vertex.glsl
+%%CLIENT%%%%DATADIR%%/client/shaders/fs_model_shader/opengl_fragment.glsl
+%%CLIENT%%%%DATADIR%%/client/shaders/fs_model_shader/opengl_vertex.glsl
 %%CLIENT%%%%DATADIR%%/client/shaders/fxaa/opengl_fragment.glsl
 %%CLIENT%%%%DATADIR%%/client/shaders/fxaa/opengl_vertex.glsl
 %%CLIENT%%%%DATADIR%%/client/shaders/inventory_shader/opengl_fragment.glsl
