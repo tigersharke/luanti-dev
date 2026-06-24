@@ -1,6 +1,6 @@
 ### PORTNAME block ##--------------------------------------------------------------------------------------
 PORTNAME=		luanti
-DISTVERSION=	g20260615
+DISTVERSION=	g20260620
 CATEGORIES=		games
 MASTER_SITES=	GH
 PKGNAMESUFFIX=	-dev
@@ -24,10 +24,10 @@ USES=			cmake iconv:wchar_t sqlite ninja:make pkgconfig:build
 USE_GITHUB=		yes
 GH_ACCOUNT=		luanti-org
 GH_PROJECT=		luanti
-GH_TAGNAME=		fcf7692e15f8be4d2361380216c65ba098d5382f
+GH_TAGNAME=		5c506adbed9c428f2ba5088884af83c37ab4e1f8
 
 # USES=cmake related variables ##--------------------------------------------------------------------------
-CMAKE_ARGS=		-DCMAKE_INSTALL_PREFIX="/usr/local" \
+CMAKE_ARGS=		-DCMAKE_INSTALL_PREFIX="${LOCALBASE}" \
 				-DCUSTOM_EXAMPLE_CONF_DIR="${LOCALBASE}/etc"
 #				-DCMAKE_CXX_FLAGS="-stdlib=libc++"
 #				-DCMAKE_FETCHCONTENT_FULLY_DISCONNECTED="FALSE"
@@ -54,6 +54,8 @@ OPTIONS_MULTI_SOFTWARE=		CLIENT SERVER
 OPTIONS_SINGLE=				GRAPHICS
 OPTIONS_SINGLE_GRAPHICS=	GLES2 OPENGL OPENGL3
 OPTIONS_SUB=				yes
+
+#
 ### options descriptions ##--------------------------------------------------------------------------------
 BENCHMARKS_DESC=			Adds some benchmark chat commands (BUILD_BENCHMARKS)
 BUILD_DESC=					Admin/Dev needs
@@ -91,6 +93,7 @@ SYSTEM_LUAJIT_DESC=			Use or install luajit from ports (instead of bundled lua) 
 #TRACY_DESC=				Support Tracy frame and sampling profiler --build fails-- (BUILD_WITH_TRACY)
 UNITTESTS_DESC=				Build unit test sources (BUILD_UNITTESTS)
 
+#
 ### options helpers ##-------------------------------------------------------------------------------------
 BENCHMARKS_CMAKE_BOOL=		BUILD_BENCHMARKS
 #TRACY_BUILD_DEPENDS=		tracy>0:devel/tracy
@@ -106,8 +109,8 @@ CLIENT_USE=	\
 CLIENT_CMAKE_BOOL=			BUILD_CLIENT
 CURL_LIB_DEPENDS=			libcurl.so:ftp/curl
 CURL_CMAKE_BOOL=			ENABLE_CURL
-DEBUG_ON_CMAKE_ARGS+=		-DCMAKE_BUILD_TYPE="Debug"
-DEBUG_OFF_CMAKE_ARGS+=		-DCMAKE_BUILD_TYPE="Release"
+DEBUG_ON_CMAKE_ON=			-DCMAKE_BUILD_TYPE="Debug"
+DEBUG_OFF_CMAKE_OFF=		-DCMAKE_BUILD_TYPE="Release"
 DEVTEST_CMAKE_BOOL=			INSTALL_DEVTEST
 DOCS_CMAKE_BOOL=			BUILD_DOCUMENTATION
 GLES2_USE=					GL+=glesv2
@@ -205,6 +208,7 @@ post-stage:
 # These are temporary links which might only be useful for transition and a blind update, when used they indicate a deprecated solution.
 
 post-install:
+	@${ECHO_MSG} ${PYTHON_CMD}
 	@${ECHO_MSG} " "
 	@${ECHO_MSG} "-->  "${PREFIX}/etc/"minetest.conf.example explains options and gives their default values. "
 	@${ECHO_MSG} " "
@@ -215,33 +219,7 @@ post-install:
 	@${ECHO_MSG} " "
 	@${ECHO_MSG} " "
 
-# It turns out that hard links or relative links do not work for luanti and ordinary symbolic links fail to work as desired.
-#.if ${PORT_OPTIONS:MSYSTEM_FONTS} && ${PORT_OPTIONS:MCLIENT}
-#post-stage:
-#	${RM} ${STAGEDIR}${LOCALBASE}/share/luanti/fonts/Arimo-Bold.ttf
-#	${RM} ${STAGEDIR}${LOCALBASE}/share/luanti/fonts/Arimo-BoldItalic.ttf
-#	${RM} ${STAGEDIR}${LOCALBASE}/share/luanti/fonts/Arimo-Italic.ttf
-#	${RM} ${STAGEDIR}${LOCALBASE}/share/luanti/fonts/Arimo-Regular.ttf
-#	${RM} ${STAGEDIR}${LOCALBASE}/share/luanti/fonts/Arimo-LICENSE.txt
-#	${RM} ${STAGEDIR}${LOCALBASE}/share/luanti/fonts/Cousine-Bold.ttf
-#	${RM} ${STAGEDIR}${LOCALBASE}/share/luanti/fonts/Cousine-BoldItalic.ttf
-#	${RM} ${STAGEDIR}${LOCALBASE}/share/luanti/fonts/Cousine-Italic.ttf
-#	${RM} ${STAGEDIR}${LOCALBASE}/share/luanti/fonts/Cousine-LICENSE.txt
-#	${RM} ${STAGEDIR}${LOCALBASE}/share/luanti/fonts/Cousine-Regular.ttf
-#	${RM} ${STAGEDIR}${LOCALBASE}/share/luanti/fonts/DroidSansFallbackFull-LICENSE.txt
-#	${RM} ${STAGEDIR}${LOCALBASE}/share/luanti/fonts/DroidSansFallbackFull.ttf
 #
-#	${LN} -L ${LOCALBASE}/share/fonts/ChromeOS/Arimo-Bold.ttf ${STAGEDIR}${LOCALBASE}/share/luanti/fonts/Arimo-Bold.ttf
-#	${LN} -L ${LOCALBASE}/share/fonts/ChromeOS/Arimo-BoldItalic.ttf ${STAGEDIR}${LOCALBASE}/share/luanti/fonts/Arimo-BoldItalic.ttf
-#	${LN} -L ${LOCALBASE}/share/fonts/ChromeOS/Arimo-Italic.ttf ${STAGEDIR}${LOCALBASE}/share/luanti/fonts/Arimo-Italic.ttf
-#	${LN} -L ${LOCALBASE}/share/fonts/ChromeOS/Cousine-Bold.ttf ${STAGEDIR}${LOCALBASE}/share/luanti/fonts/Cousine-Bold.ttf
-#	${LN} -L ${LOCALBASE}/share/fonts/ChromeOS/Cousine-BoldItalic.ttf ${STAGEDIR}${LOCALBASE}/share/luanti/fonts/Cousine-BoldItalic.ttf
-#	${LN} -L ${LOCALBASE}/share/fonts/ChromeOS/Cousine-Italic.ttf ${STAGEDIR}${LOCALBASE}/share/luanti/fonts/Cousine-Italic.ttf
-#	${LN} -L ${LOCALBASE}/share/fonts/ChromeOS/Cousine-Regular.ttf ${STAGEDIR}${LOCALBASE}/share/luanti/fonts/Cousine-Regular.ttf
-#	${LN} -L ${LOCALBASE}/share/fonts/Droid/DroidSansFallbackFull.ttf ${STAGEDIR}${LOCALBASE}/share/luanti/fonts/DroidSansFallbackFull.ttf
-#
-#.endif
-
 #----------------------------------------------------------------------
 
 .include <bsd.port.mk>
