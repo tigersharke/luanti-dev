@@ -580,6 +580,7 @@ etc/minetest.conf.example
 %%DEVTEST%%%%DATADIR%%/games/devtest/mods/testformspec/textures/testformspec_item.png
 %%DEVTEST%%%%DATADIR%%/games/devtest/mods/testformspec/textures/testformspec_node.png
 %%DEVTEST%%%%DATADIR%%/games/devtest/mods/testformspec/textures/testformspec_pressed.png
+%%DEVTEST%%%%DATADIR%%/games/devtest/mods/testformspec/textures/testformspec_tooltip_style_bg.png
 %%DEVTEST%%%%DATADIR%%/games/devtest/mods/testfullscreenfs/init.lua
 %%DEVTEST%%%%DATADIR%%/games/devtest/mods/testfullscreenfs/mod.conf
 %%DEVTEST%%%%DATADIR%%/games/devtest/mods/testhud/init.lua
