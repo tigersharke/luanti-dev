@@ -102,7 +102,6 @@ CLIENT_LIB_DEPENDS=			libpng16.so:graphics/png
 CLIENT_USES=				gl xorg jpeg
 CLIENT_USE=	\
 							GL=glu \
-							SDL=sdl2,ttf2 \
 							XORG=ice,sm,x11,xext,xcb,xres,xshmfence,xau,xaw,xcomposite,xcursor,xdamage,xdmcp,\
 							xfixes,xft,xinerama,xkbfile,xmu,xpm,xrandr,xrender,xscreensaver,xt,xtst,xv,xxf86vm
 
@@ -177,6 +176,7 @@ LIB_DEPENDS+=	libvorbisfile.so:audio/libvorbis libvorbis.so:audio/libvorbis libo
 
 .if ${PORT_OPTIONS:MCLIENT} && !${PORT_OPTIONS:MSDL3}
 SDL=sdl2,ttf2
+CLIENT_LIB_DEPENDS=			libSDL2.so:devel/sdl20
 .endif
 
 .if ${PORT_OPTIONS:MCLIENT} && ${PORT_OPTIONS:MSDL3}
