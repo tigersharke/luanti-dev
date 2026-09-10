@@ -1,7 +1,5 @@
 %%CLIENT%%bin/luanti
-%%SERVER%%bin/luantiserver
 etc/minetest.conf.example
-%%SERVER%%etc/rc.d/luanti
 %%CLIENT%%share/applications/org.luanti.luanti.desktop
 %%DOCS%%%%DOCSDIR%%/README.md
 %%DOCS%%%%DOCSDIR%%/client_lua_api.md
