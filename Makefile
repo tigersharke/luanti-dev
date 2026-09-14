@@ -1,155 +1,155 @@
 ### PORTNAME block ##--------------------------------------------------------------------------------------
-PORTNAME=		luanti
-DISTVERSION=	g20260911
-CATEGORIES=		games
+PORTNAME=	luanti
+DISTVERSION=	g20260913
+CATEGORIES=	games
 MASTER_SITES=	GH
 PKGNAMESUFFIX=	-dev
 DIST_SUBDIR=	${PORTNAME}${PKGNAMESUFFIX}
 
 # Maintainer block ##--------------------------------------------------------------------------------------
-MAINTAINER=		nope@nothere
-COMMENT=		Near-infinite-world block sandbox game
-WWW=			https://www.luanti.org/
+MAINTAINER=	nope@nothere
+COMMENT=	Near-infinite-world block sandbox game
+WWW=		https://www.luanti.org/
 
 ### License block ##---------------------------------------------------------------------------------------
-LICENSE=		LGPL21+
+LICENSE=	LGPL21+
 LICENSE_FILE=	${WRKSRC}/doc/lgpl-2.1.txt
 
 # dependencies ##------------------------------------------------------------------------------------------
 LIB_DEPENDS=	libzstd.so:archivers/zstd \
-				libfreetype.so:print/freetype2
+		libfreetype.so:print/freetype2
 
 ### uses block ##------------------------------------------------------------------------------------------
-USES=			cmake iconv:wchar_t sqlite ninja:make pkgconfig:build
-USE_GITHUB=		yes
-GH_ACCOUNT=		luanti-org
-GH_PROJECT=		luanti
-GH_TAGNAME=		befadef82035f57a478de88e3f939f3e77e6e77c
+USES=		cmake iconv:wchar_t sqlite ninja:make pkgconfig:build
+USE_GITHUB=	yes
+GH_ACCOUNT=	luanti-org
+GH_PROJECT=	luanti
+GH_TAGNAME=	57224f70045411413d91f9f5cea6ab612ff39cfa
 
 # USES=cmake related variables ##--------------------------------------------------------------------------
-CMAKE_ARGS=		-DCMAKE_INSTALL_PREFIX="${LOCALBASE}" \
-				-DCUSTOM_EXAMPLE_CONF_DIR="${LOCALBASE}/etc"
-#				-DCMAKE_CXX_FLAGS="-stdlib=libc++"
-#				-DCMAKE_FETCHCONTENT_FULLY_DISCONNECTED="FALSE"
+CMAKE_ARGS=	-DCMAKE_INSTALL_PREFIX="${LOCALBASE}" \
+		-DCUSTOM_EXAMPLE_CONF_DIR="${LOCALBASE}/etc"
+#		-DCMAKE_CXX_FLAGS="-stdlib=libc++"
+#		-DCMAKE_FETCHCONTENT_FULLY_DISCONNECTED="FALSE"
 
 ### Make block ##------------------------------------------------------------------------------------------
-TEST_ENV=		${MAKE_ENV} LC_ALL=C.UTF-8
+TEST_ENV=	${MAKE_ENV} LC_ALL=C.UTF-8
 ### conflicts ##-------------------------------------------------------------------------------------------
-CONFLICTS=		luanti minetest irrlichtMt minetest-dev irrlicht-minetest
+CONFLICTS=	luanti minetest irrlichtMt minetest-dev irrlicht-minetest
 ### wrksrc block ##----------------------------------------------------------------------------------------
 #
 ### packaging list block ##--------------------------------------------------------------------------------
 #
 ### options definitions ##---------------------------------------------------------------------------------
-OPTIONS_DEFAULT=			CURL DOCS LTO OPENSSLCRYPTO SOUND SPATIAL SYSTEM_LUAJIT SYSTEM_GMP SYSTEM_JSONCPP CLIENT OPENGL
-OPTIONS_GROUP=				BUILD DATABASE MISC NEEDS SYSTEM
-OPTIONS_GROUP_BUILD=		BENCHMARKS DEBUG DEVTEST DOCS NCURSES PROFILING PROMETHEUS UNITTESTS #TRACY GITTRACY
-OPTIONS_GROUP_DATABASE=		LEVELDB PGSQL REDIS
-OPTIONS_GROUP_MISC=			LTO OPENSSLCRYPTO
-OPTIONS_GROUP_NEEDS=		CURL NLS SDL3 SOUND SPATIAL
-#OPTIONS_GROUP_SYSTEM=		SYSTEM_FONTS SYSTEM_GMP SYSTEM_JSONCPP SYSTEM_LUAJIT
-OPTIONS_GROUP_SYSTEM=		SYSTEM_GMP SYSTEM_JSONCPP SYSTEM_LUAJIT
-OPTIONS_MULTI=				SOFTWARE
-OPTIONS_MULTI_SOFTWARE=		CLIENT SERVER
-OPTIONS_SINGLE=				GRAPHICS
-OPTIONS_SINGLE_GRAPHICS=	GLES2 OPENGL OPENGL3
-OPTIONS_SUB=				yes
+OPTIONS_DEFAULT=	CURL DOCS LTO OPENSSLCRYPTO SOUND SPATIAL SYSTEM_LUAJIT SYSTEM_GMP SYSTEM_JSONCPP CLIENT OPENGL
+OPTIONS_GROUP=		BUILD DATABASE MISC NEEDS SYSTEM
+OPTIONS_GROUP_BUILD=	BENCHMARKS DEBUG DEVTEST DOCS NCURSES PROFILING PROMETHEUS UNITTESTS #TRACY GITTRACY
+OPTIONS_GROUP_DATABASE=	LEVELDB PGSQL REDIS
+OPTIONS_GROUP_MISC=	LTO OPENSSLCRYPTO
+OPTIONS_GROUP_NEEDS=	CURL NLS SDL3 SOUND SPATIAL
+#OPTIONS_GROUP_SYSTEM=	SYSTEM_FONTS SYSTEM_GMP SYSTEM_JSONCPP SYSTEM_LUAJIT
+OPTIONS_GROUP_SYSTEM=	SYSTEM_GMP SYSTEM_JSONCPP SYSTEM_LUAJIT
+OPTIONS_MULTI=		SOFTWARE
+OPTIONS_MULTI_SOFTWARE=	CLIENT SERVER
+OPTIONS_SINGLE=		GRAPHICS
+OPTIONS_SINGLE_GRAPHICS=GLES2 OPENGL OPENGL3
+OPTIONS_SUB=		yes
 
 #
 ### options descriptions ##--------------------------------------------------------------------------------
-BENCHMARKS_DESC=			Adds some benchmark chat commands (BUILD_BENCHMARKS)
-BUILD_DESC=					Admin/Dev needs
-CLIENT_DESC=				Add graphics and sdl2 support, dependencies (BUILD_CLIENT)
-CURL_DESC=					Add support for fetching media via cURL: contentdb (ENABLE_CURL)
-DATABASE_DESC=				Database support
-DEVTEST_DESC=				Install Development Test game also (INSTALL_DEVTEST)
-DEBUG_DESC=					Select Debug build by -DCMAKE_BUILD_TYPE=Debug
-DOCS_DESC=					Build and install documentation (via doxygen) (BUILD_DOCUMENTATION)
-GLES2_DESC=					Enable OpenGL ES 2+ driver (ENABLE_GLES2)
-GRAPHICS_DESC=				Graphics support
-LEVELDB_DESC=				Add leveldb map backend support --broken: leveldb port build fails-- (ENABLE_LEVELDB)
-LTO_DESC=					Use IPO/LTO optimizations (smaller and more efficient than regular build) (ENABLE_LTO)
-MISC_DESC=					Other options
-NCURSES_DESC=				Enable server side terminal (cli option: --terminal) (ENABLE_CURSES)
-NEEDS_DESC=					Client essentials
-NLS_DESC=					Native Language Support (ENABLE_GETTEXT)
-OPENGL3_DESC=				Support OpenGL 3+ driver (ENABLE_OPENGL3)
-OPENGL_DESC=				Support OpenGL driver (ENABLE_OPENGL)
-OPENSSLCRYPTO_DESC=			Add faster SHA1 and SHA2 hashing via libcrypt from openssl (ENABLE_OPENSSL)
-PGSQL_DESC=					Add PostgreSQL map backend support (ENABLE_POSTGRESQL)
-PROFILING_DESC=				Use gprof for profiling (USE_GPROF)
-PROMETHEUS_DESC=			Support Prometheus metrics exporter (ENABLE_PROMETHEUS)
-REDIS_DESC=					Add Redis map backend support (ENABLE_REDIS)
-SDL3_DESC=					Choose SDL3 instead of default SDL2 (USE_SDL3)
-SERVER_DESC=				Build server (BUILD_SERVER)
-SOFTWARE_DESC=				Software components
-SOUND_DESC=					Add sound for client via openal-soft (ENABLE_SOUND)
-SPATIAL_DESC=				Speed up AreaStores with SpatialIndex (ENABLE_SPATIAL)
-SYSTEM_DESC=				System subsitutes
-#SYSTEM_FONTS_DESC=			Use or install default fonts from ports
-SYSTEM_GMP_DESC=			Use gmp from ports (ENABLE_SYSTEM_GMP)
-SYSTEM_JSONCPP_DESC=		Use jsoncpp from ports (ENABLE_SYSTEM_JSONCPP)
-SYSTEM_LUAJIT_DESC=			Use or install luajit from ports (instead of bundled lua) (ENABLE_LUAJIT)
-#TRACY_DESC=				Support Tracy frame and sampling profiler --build fails-- (BUILD_WITH_TRACY)
-UNITTESTS_DESC=				Build unit test sources (BUILD_UNITTESTS)
+BENCHMARKS_DESC=	Adds some benchmark chat commands (BUILD_BENCHMARKS)
+BUILD_DESC=		Admin/Dev needs
+CLIENT_DESC=		Add graphics and sdl2 support, dependencies (BUILD_CLIENT)
+CURL_DESC=		Add support for fetching media via cURL: contentdb (ENABLE_CURL)
+DATABASE_DESC=		Database support
+DEVTEST_DESC=		Install Development Test game also (INSTALL_DEVTEST)
+DEBUG_DESC=		Select Debug build by -DCMAKE_BUILD_TYPE=Debug
+DOCS_DESC=		Build and install documentation (via doxygen) (BUILD_DOCUMENTATION)
+GLES2_DESC=		Enable OpenGL ES 2+ driver (ENABLE_GLES2)
+GRAPHICS_DESC=		Graphics support
+LEVELDB_DESC=		Add leveldb map backend support --broken: leveldb port build fails-- (ENABLE_LEVELDB)
+LTO_DESC=		Use IPO/LTO optimizations (smaller and more efficient than regular build) (ENABLE_LTO)
+MISC_DESC=		Other options
+NCURSES_DESC=		Enable server side terminal (cli option: --terminal) (ENABLE_CURSES)
+NEEDS_DESC=		Client essentials
+NLS_DESC=		Native Language Support (ENABLE_GETTEXT)
+OPENGL3_DESC=		Support OpenGL 3+ driver (ENABLE_OPENGL3)
+OPENGL_DESC=		Support OpenGL driver (ENABLE_OPENGL)
+OPENSSLCRYPTO_DESC=	Add faster SHA1 and SHA2 hashing via libcrypt from openssl (ENABLE_OPENSSL)
+PGSQL_DESC=		Add PostgreSQL map backend support (ENABLE_POSTGRESQL)
+PROFILING_DESC=		Use gprof for profiling (USE_GPROF)
+PROMETHEUS_DESC=	Support Prometheus metrics exporter (ENABLE_PROMETHEUS)
+REDIS_DESC=		Add Redis map backend support (ENABLE_REDIS)
+SDL3_DESC=		Choose SDL3 instead of default SDL2 (USE_SDL3)
+SERVER_DESC=		Build server (BUILD_SERVER)
+SOFTWARE_DESC=		Software components
+SOUND_DESC=		Add sound for client via openal-soft (ENABLE_SOUND)
+SPATIAL_DESC=		Speed up AreaStores with SpatialIndex (ENABLE_SPATIAL)
+SYSTEM_DESC=		System subsitutes
+#SYSTEM_FONTS_DESC=	Use or install default fonts from ports
+SYSTEM_GMP_DESC=	Use gmp from ports (ENABLE_SYSTEM_GMP)
+SYSTEM_JSONCPP_DESC=	Use jsoncpp from ports (ENABLE_SYSTEM_JSONCPP)
+SYSTEM_LUAJIT_DESC=	Use or install luajit from ports (instead of bundled lua) (ENABLE_LUAJIT)
+#TRACY_DESC=		Support Tracy frame and sampling profiler --build fails-- (BUILD_WITH_TRACY)
+UNITTESTS_DESC=		Build unit test sources (BUILD_UNITTESTS)
 
 #
 ### options helpers ##-------------------------------------------------------------------------------------
-BENCHMARKS_CMAKE_BOOL=		BUILD_BENCHMARKS
-#TRACY_BUILD_DEPENDS=		tracy>0:devel/tracy
-#TRACY_CMAKE_BOOL=			BUILD_WITH_TRACY
-CLIENT_LIB_DEPENDS=			libpng16.so:graphics/png
-CLIENT_USES=				gl xorg jpeg
+BENCHMARKS_CMAKE_BOOL=	BUILD_BENCHMARKS
+#TRACY_BUILD_DEPENDS=	tracy>0:devel/tracy
+#TRACY_CMAKE_BOOL=	BUILD_WITH_TRACY
+CLIENT_LIB_DEPENDS=	libpng16.so:graphics/png
+CLIENT_USES=		gl xorg jpeg
 CLIENT_USE=	\
-							GL=glu \
-							XORG=ice,sm,x11,xext,xcb,xres,xshmfence,xau,xaw,xcomposite,xcursor,xdamage,xdmcp,\
-							xfixes,xft,xinerama,xkbfile,xmu,xpm,xrandr,xrender,xscreensaver,xt,xtst,xv,xxf86vm
+			GL=glu \
+			XORG=ice,sm,x11,xext,xcb,xres,xshmfence,xau,xaw,xcomposite,xcursor,xdamage,xdmcp,\
+			xfixes,xft,xinerama,xkbfile,xmu,xpm,xrandr,xrender,xscreensaver,xt,xtst,xv,xxf86vm
 
-CLIENT_CMAKE_BOOL=			BUILD_CLIENT
-CURL_LIB_DEPENDS=			libcurl.so:ftp/curl
-CURL_CMAKE_BOOL=			ENABLE_CURL
-DEBUG_ON_CMAKE_ON=			-DCMAKE_BUILD_TYPE="Debug"
+CLIENT_CMAKE_BOOL=		BUILD_CLIENT
+CURL_LIB_DEPENDS=		libcurl.so:ftp/curl
+CURL_CMAKE_BOOL=		ENABLE_CURL
+DEBUG_ON_CMAKE_ON=		-DCMAKE_BUILD_TYPE="Debug"
 DEBUG_OFF_CMAKE_OFF=		-DCMAKE_BUILD_TYPE="Release"
-DEVTEST_CMAKE_BOOL=			INSTALL_DEVTEST
-DOCS_CMAKE_BOOL=			BUILD_DOCUMENTATION
-GLES2_USE=					GL+=glesv2
-GLES2_CMAKE_BOOL=			ENABLE_GLES2
+DEVTEST_CMAKE_BOOL=		INSTALL_DEVTEST
+DOCS_CMAKE_BOOL=		BUILD_DOCUMENTATION
+GLES2_USE=			GL+=glesv2
+GLES2_CMAKE_BOOL=		ENABLE_GLES2
 LEVELDB_LIB_DEPENDS=		libleveldb.so:databases/leveldb
-LEVELDB_CMAKE_BOOL=			ENABLE_LEVELDB
-LTO_CMAKE_BOOL=				ENABLE_LTO
-NCURSES_USES=				ncurses
-NCURSES_CMAKE_BOOL=			ENABLE_CURSES
-NLS_USES=					gettext
-NLS_CMAKE_BOOL=				ENABLE_GETTEXT
-NLS_LDFLAGS=				-L${LOCALBASE}/lib
-OPENGL3_USE=				GL+=gl
-OPENGL3_CMAKE_BOOL=			ENABLE_OPENGL3
-OPENGL_USE=					GL+=gl
-OPENGL_CMAKE_BOOL=			ENABLE_OPENGL
-OPENSSLCRYPTO_USES=			ssl
+LEVELDB_CMAKE_BOOL=		ENABLE_LEVELDB
+LTO_CMAKE_BOOL=			ENABLE_LTO
+NCURSES_USES=			ncurses
+NCURSES_CMAKE_BOOL=		ENABLE_CURSES
+NLS_USES=			gettext
+NLS_CMAKE_BOOL=			ENABLE_GETTEXT
+NLS_LDFLAGS=			-L${LOCALBASE}/lib
+OPENGL3_USE=			GL+=gl
+OPENGL3_CMAKE_BOOL=		ENABLE_OPENGL3
+OPENGL_USE=			GL+=gl
+OPENGL_CMAKE_BOOL=		ENABLE_OPENGL
+OPENSSLCRYPTO_USES=		ssl
 OPENSSLCRYPTO_CMAKE_BOOL=	ENABLE_OPENSSL
-PGSQL_USES=					pgsql
-PGSQL_CMAKE_BOOL=			ENABLE_POSTGRESQL
+PGSQL_USES=			pgsql
+PGSQL_CMAKE_BOOL=		ENABLE_POSTGRESQL
 PROFILING_CMAKE_BOOL=		USE_GPROF
 PROMETHEUS_CMAKE_BOOL=		ENABLE_PROMETHEUS
-REDIS_LIB_DEPENDS=			libhiredis.so:databases/hiredis
-REDIS_CMAKE_BOOL=			ENABLE_REDIS
-SDL3_CMAKE_BOOL=			USE_SDL3
-SDL3_LIB_DEPENDS=			libSDL3.so:devel/sdl3
-SERVER_CMAKE_BOOL=			BUILD_SERVER
-SOUND_CMAKE_BOOL=			ENABLE_SOUND
+REDIS_LIB_DEPENDS=		libhiredis.so:databases/hiredis
+REDIS_CMAKE_BOOL=		ENABLE_REDIS
+SDL3_CMAKE_BOOL=		USE_SDL3
+SDL3_LIB_DEPENDS=		libSDL3.so:devel/sdl3
+SERVER_CMAKE_BOOL=		BUILD_SERVER
+SOUND_CMAKE_BOOL=		ENABLE_SOUND
 SPATIAL_LIB_DEPENDS=		libspatialindex.so:devel/spatialindex
-SPATIAL_CMAKE_BOOL=			ENABLE_SPATIAL
+SPATIAL_CMAKE_BOOL=		ENABLE_SPATIAL
 #SYSTEM_FONTS_RUN_DEPENDS=	${LOCALBASE}/share/fonts/ChromeOS/Arimo-Bold.ttf:x11-fonts/croscorefonts-fonts-ttf \
-#							${LOCALBASE}/share/fonts/Droid/DroidSans.ttf:x11-fonts/droid-fonts-ttf
+#				${LOCALBASE}/share/fonts/Droid/DroidSans.ttf:x11-fonts/droid-fonts-ttf
 SYSTEM_GMP_LIB_DEPENDS=		libgmp.so:math/gmp
 SYSTEM_GMP_CMAKE_BOOL=		ENABLE_SYSTEM_GMP
 SYSTEM_GMP_CMAKE_ON=		-DGMP_INCLUDE_DIR="${PREFIX}/include"
 SYSTEM_JSONCPP_LIB_DEPENDS=	libjsoncpp.so:devel/jsoncpp
 SYSTEM_JSONCPP_CMAKE_BOOL=	ENABLE_SYSTEM_JSONCPP
 SYSTEM_JSONCPP_CMAKE_ON=	-DJSON_INCLUDE_DIR="${PREFIX}/include/jsoncpp"
-SYSTEM_LUAJIT_USES=			luajit
-SYSTEM_LUAJIT_USE=			luajit
+SYSTEM_LUAJIT_USES=		luajit
+SYSTEM_LUAJIT_USE=		luajit
 #SYSTEM_LUAJIT_CMAKE_BOOL=	ENABLE_LUAJIT # Redundant as one of the above includes this
 UNITTESTS_CMAKE_BOOL=		BUILD_UNITTESTS
 
@@ -157,7 +157,7 @@ UNITTESTS_CMAKE_BOOL=		BUILD_UNITTESTS
 
 .if ${PORT_OPTIONS:MCLIENT} && ${PORT_OPTIONS:MSYSTEM_LUAJIT}
 CMAKE_ARGS+=	-DENABLE_LUAJIT="ON" \
-				-DREQUIRE_LUAJIT="ON"
+		-DREQUIRE_LUAJIT="ON"
 .endif
 
 .if ${PORT_OPTIONS:MCLIENT} && ${PORT_OPTIONS:MOPENGL}
@@ -176,7 +176,7 @@ LIB_DEPENDS+=	libvorbisfile.so:audio/libvorbis libvorbis.so:audio/libvorbis libo
 
 .if ${PORT_OPTIONS:MCLIENT} && !${PORT_OPTIONS:MSDL3}
 SDL=sdl2,ttf2
-CLIENT_LIB_DEPENDS=			libSDL2.so:devel/sdl20
+CLIENT_LIB_DEPENDS=	libSDL2.so:devel/sdl20
 .endif
 
 .if ${PORT_OPTIONS:MCLIENT} && ${PORT_OPTIONS:MSDL3}
@@ -190,8 +190,8 @@ SDL=sdl3,ttf
 USE_RC_SUBR=	${PORTNAME}
 # When the official /usr/ports/GIDs file is changed, this may be luanti instead of minetest.
 # At that time the files/luanti.in will need to be modified for the user and group defined.
-USERS=			minetest #USERS=			${PORTNAME}
-GROUPS=			minetest #GROUPS=		${PORTNAME}
+USERS=			minetest #USERS=	${PORTNAME}
+GROUPS=			minetest #GROUPS=	${PORTNAME}
 .endif
 
 do-test-UNITTESTS-on:
