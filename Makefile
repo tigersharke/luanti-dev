@@ -1,6 +1,6 @@
 ### PORTNAME block ##--------------------------------------------------------------------------------------
 PORTNAME=	luanti
-DISTVERSION=	g20260913
+DISTVERSION=	g20260914
 CATEGORIES=	games
 MASTER_SITES=	GH
 PKGNAMESUFFIX=	-dev
@@ -24,7 +24,7 @@ USES=		cmake iconv:wchar_t sqlite ninja:make pkgconfig:build
 USE_GITHUB=	yes
 GH_ACCOUNT=	luanti-org
 GH_PROJECT=	luanti
-GH_TAGNAME=	57224f70045411413d91f9f5cea6ab612ff39cfa
+GH_TAGNAME=	b3adeb447ac22c801429128afbc8a36b3b2f436c
 
 # USES=cmake related variables ##--------------------------------------------------------------------------
 CMAKE_ARGS=	-DCMAKE_INSTALL_PREFIX="${LOCALBASE}" \
