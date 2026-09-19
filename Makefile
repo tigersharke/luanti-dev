@@ -1,6 +1,6 @@
 ### PORTNAME block ##--------------------------------------------------------------------------------------
 PORTNAME=	luanti
-DISTVERSION=	g20260916
+DISTVERSION=	g20260918
 CATEGORIES=	games
 MASTER_SITES=	GH
 PKGNAMESUFFIX=	-dev
@@ -24,13 +24,11 @@ USES=		cmake iconv:wchar_t sqlite ninja:make pkgconfig:build
 USE_GITHUB=	yes
 GH_ACCOUNT=	luanti-org
 GH_PROJECT=	luanti
-GH_TAGNAME=	24a02a7e80286174449ff63b10a9ac8489e2849a
+GH_TAGNAME=	b4eb8b91e611c3d83f7557c39b4f1caab9406e57
 
 # USES=cmake related variables ##--------------------------------------------------------------------------
 CMAKE_ARGS=	-DCMAKE_INSTALL_PREFIX="${LOCALBASE}" \
 		-DCUSTOM_EXAMPLE_CONF_DIR="${LOCALBASE}/etc"
-#		-DCMAKE_CXX_FLAGS="-stdlib=libc++"
-#		-DCMAKE_FETCHCONTENT_FULLY_DISCONNECTED="FALSE"
 
 ### Make block ##------------------------------------------------------------------------------------------
 TEST_ENV=	${MAKE_ENV} LC_ALL=C.UTF-8
@@ -41,7 +39,7 @@ CONFLICTS=	luanti minetest irrlichtMt minetest-dev irrlicht-minetest
 ### packaging list block ##--------------------------------------------------------------------------------
 #
 ### options definitions ##---------------------------------------------------------------------------------
-OPTIONS_DEFAULT=	CURL DOCS LTO OPENSSLCRYPTO SOUND SPATIAL SYSTEM_LUAJIT SYSTEM_GMP SYSTEM_JSONCPP CLIENT OPENGL
+OPTIONS_DEFAULT=	CURL DOCS LTO OPENSSLCRYPTO SDL3 SOUND SPATIAL SYSTEM_LUAJIT SYSTEM_GMP SYSTEM_JSONCPP CLIENT OPENGL
 OPTIONS_GROUP=		BUILD DATABASE MISC NEEDS SYSTEM
 OPTIONS_GROUP_BUILD=	BENCHMARKS DEBUG DEVTEST DOCS NCURSES PROFILING PROMETHEUS UNITTESTS #TRACY GITTRACY
 OPTIONS_GROUP_DATABASE=	LEVELDB PGSQL REDIS

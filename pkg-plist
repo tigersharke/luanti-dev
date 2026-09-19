@@ -583,6 +583,7 @@ etc/minetest.conf.example
 %%DEVTEST%%%%DATADIR%%/games/devtest/mods/testfullscreenfs/mod.conf
 %%DEVTEST%%%%DATADIR%%/games/devtest/mods/testhud/init.lua
 %%DEVTEST%%%%DATADIR%%/games/devtest/mods/testhud/mod.conf
+%%DEVTEST%%%%DATADIR%%/games/devtest/mods/testhud/textures/testhud_inventory_bg.png
 %%DEVTEST%%%%DATADIR%%/games/devtest/mods/testhud/textures/testhud_waypoint.png
 %%DEVTEST%%%%DATADIR%%/games/devtest/mods/testitems/init.lua
 %%DEVTEST%%%%DATADIR%%/games/devtest/mods/testitems/mod.conf
