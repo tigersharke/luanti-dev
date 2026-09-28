@@ -1,6 +1,6 @@
 ### PORTNAME block ##--------------------------------------------------------------------------------------
 PORTNAME=	luanti
-DISTVERSION=	g20260926
+DISTVERSION=	g20260927
 CATEGORIES=	games
 MASTER_SITES=	GH
 PKGNAMESUFFIX=	-dev
@@ -17,14 +17,16 @@ LICENSE_FILE=	${WRKSRC}/doc/lgpl-2.1.txt
 
 # dependencies ##------------------------------------------------------------------------------------------
 LIB_DEPENDS=	libzstd.so:archivers/zstd \
+		libzip.so:archivers/libzip \
 		libfreetype.so:print/freetype2
+# Libzstd may be obsolete, replaced by libzip which is found in base
 
 ### uses block ##------------------------------------------------------------------------------------------
 USES=		cmake iconv:wchar_t sqlite ninja:make pkgconfig:build
 USE_GITHUB=	yes
 GH_ACCOUNT=	luanti-org
 GH_PROJECT=	luanti
-GH_TAGNAME=	041a7a60031eacce40a2d7c7b73cf6ee8acfe037
+GH_TAGNAME=	bdc785b6832afa0db9b3686d0987d9c12e69b709
 
 # USES=cmake related variables ##--------------------------------------------------------------------------
 CMAKE_ARGS=	-DCMAKE_INSTALL_PREFIX="${LOCALBASE}" \
