@@ -1,6 +1,6 @@
 ### PORTNAME block ##--------------------------------------------------------------------------------------
 PORTNAME=	luanti
-DISTVERSION=	g20260927
+DISTVERSION=	g20260928
 CATEGORIES=	games
 MASTER_SITES=	GH
 PKGNAMESUFFIX=	-dev
@@ -16,17 +16,17 @@ LICENSE=	LGPL21+
 LICENSE_FILE=	${WRKSRC}/doc/lgpl-2.1.txt
 
 # dependencies ##------------------------------------------------------------------------------------------
-LIB_DEPENDS=	libzstd.so:archivers/zstd \
-		libzip.so:archivers/libzip \
+# Should not need libzstd since replaced with libzip
+# LIB_DEPENDS=	libzstd.so:archivers/zstd \
+LIB_DEPENDS=		libzip.so:archivers/libzip \
 		libfreetype.so:print/freetype2
-# Libzstd may be obsolete, replaced by libzip which is found in base
 
 ### uses block ##------------------------------------------------------------------------------------------
 USES=		cmake iconv:wchar_t sqlite ninja:make pkgconfig:build
 USE_GITHUB=	yes
 GH_ACCOUNT=	luanti-org
 GH_PROJECT=	luanti
-GH_TAGNAME=	bdc785b6832afa0db9b3686d0987d9c12e69b709
+GH_TAGNAME=	22863fdf0bbe0a67d293a8272533dea27d2aa84a
 
 # USES=cmake related variables ##--------------------------------------------------------------------------
 CMAKE_ARGS=	-DCMAKE_INSTALL_PREFIX="${LOCALBASE}" \
@@ -135,7 +135,6 @@ PROMETHEUS_CMAKE_BOOL=		ENABLE_PROMETHEUS
 REDIS_LIB_DEPENDS=		libhiredis.so:databases/hiredis
 REDIS_CMAKE_BOOL=		ENABLE_REDIS
 SDL3_CMAKE_BOOL=		USE_SDL3
-SDL3_LIB_DEPENDS=		libSDL3.so:devel/sdl3
 SERVER_CMAKE_BOOL=		BUILD_SERVER
 SOUND_CMAKE_BOOL=		ENABLE_SOUND
 SPATIAL_LIB_DEPENDS=		libspatialindex.so:devel/spatialindex
@@ -175,12 +174,13 @@ LIB_DEPENDS+=	libvorbisfile.so:audio/libvorbis libvorbis.so:audio/libvorbis libo
 .endif
 
 .if ${PORT_OPTIONS:MCLIENT} && !${PORT_OPTIONS:MSDL3}
-SDL=sdl2,ttf2
-CLIENT_LIB_DEPENDS=	libSDL2.so:devel/sdl20
+USES+=	sdl
+USE_SDL=sdl2 ttf2
 .endif
 
 .if ${PORT_OPTIONS:MCLIENT} && ${PORT_OPTIONS:MSDL3}
-SDL=sdl3,ttf
+USES+=	sdl
+USE_SDL=sdl3 ttf3
 .endif
 
 # In addition to below, `make check-plist` wants the %%SERVER%% omitted from the etc/rc.d/luanti line
