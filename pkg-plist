@@ -926,7 +926,6 @@ etc/minetest.conf.example
 %%DEVTEST%%%%DATADIR%%/games/devtest/mods/unittests/textures/unittests_stick.png
 %%DEVTEST%%%%DATADIR%%/games/devtest/mods/unittests/textures/unittests_torch.png
 %%DEVTEST%%%%DATADIR%%/games/devtest/mods/unittests/textures/unittests_unrepairable_tool.png
-%%DEVTEST%%%%DATADIR%%/games/devtest/mods/unittests/vector2.lua
 %%DEVTEST%%%%DATADIR%%/games/devtest/mods/unittests/version.lua
 %%DEVTEST%%%%DATADIR%%/games/devtest/mods/util_commands/init.lua
 %%DEVTEST%%%%DATADIR%%/games/devtest/mods/util_commands/mod.conf
