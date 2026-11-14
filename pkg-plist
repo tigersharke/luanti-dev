@@ -210,7 +210,7 @@ etc/minetest.conf.example
 %%DATADIR%%/builtin/locale/__builtin.zh_TW.tr
 %%DATADIR%%/builtin/locale/template.txt
 %%DATADIR%%/builtin/mainmenu/CMakeLists.txt
-%%DATADIR%%/builtin/mainmenu/async_event.lua
+%%DATADIR%%/builtin/mainmenu/async.lua
 %%DATADIR%%/builtin/mainmenu/common.lua
 %%DATADIR%%/builtin/mainmenu/content/CMakeLists.txt
 %%DATADIR%%/builtin/mainmenu/content/contentdb.lua
